@@ -13,14 +13,14 @@ from keras.callbacks import ModelCheckpoint, TensorBoard, CSVLogger, History, Ea
 import keras.backend as K
 from keras.optimizers import SGD, RMSprop, Adam
 
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 import os
 from os import listdir
 from os.path import isfile, join
 import numpy as np
 import h5py
-
+batch_size = 32
 
 nb_train_samples = 70700
 nb_validation_samples = 10100
@@ -50,13 +50,13 @@ datagen = ImageDataGenerator(
 train_generator = datagen.flow_from_directory(
     train_data_dir,
     target_size=(299, 299),
-    batch_size=32,
+    batch_size=batch_size,
     class_mode='categorical')
 
 validation_generator = datagen.flow_from_directory(
     validation_data_dir,
     target_size=(299, 299),
-    batch_size=32,
+    batch_size=batch_size,
     class_mode='categorical')
 
 
@@ -106,15 +106,15 @@ csv_logger = CSVLogger('first.3.log')
 
 model.fit_generator(train_generator,
                     validation_data=validation_generator,
-                    validation_steps=nb_validation_samples,
-                    steps_per_epoch=nb_train_samples,
-                    epochs=10,
-                    verbose=1,
-                    callbacks=[csv_logger, checkpointer])
+                    validation_steps=(nb_validation_samples / batch_size),
+                    steps_per_epoch=(nb_train_samples / batch_size),
+                    epochs=7,
+					callbacks=[csv_logger, checkpointer],
+                    verbose=1)
 					
-for layer in model.layers[:25]:
+for layer in model.layers[:172]:
     layer.trainable = False
-for layer in model.layers[25:]:
+for layer in model.layers[172:]:
     layer.trainable = True
 
 print("Second pass")
@@ -127,9 +127,18 @@ early_stoping = EarlyStopping(monitor='val_loss', patience=5, min_delta=0.001, v
 
 model.fit_generator(train_generator,
                     validation_data=validation_generator,
-                    validation_steps=nb_validation_samples,
-                    steps_per_epoch=nb_train_samples,
+                    validation_steps=(nb_validation_samples / batch_size),
+                    steps_per_epoch=(nb_train_samples / batch_size),
                     epochs=nb_epoch,
                     verbose=1,
                     callbacks=[csv_logger, checkpointer, history, early_stoping])
 
+					
+plt.plot(history.epoch, history.history['acc'], color="red")
+plt.plot(history.epoch, history.history['loss'], color="green")
+plt.plot(history.epoch, history.history['val_acc'], color="blue")
+plt.plot(history.epoch, history.history['val_loss'], color="black")
+
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.show()
