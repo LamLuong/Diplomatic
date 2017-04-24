@@ -11,8 +11,13 @@ Objectness::Objectness(std::string traning_path) {
 Objectness::~Objectness() {
 
 }
-void Objectness::LoadImage(std::string path_image) {
+bool Objectness::LoadImage(std::string path_image) {
   input_image_ = cv::imread(path_image.c_str());
+  if(!input_image_.data) {
+//    cout <<  "Could not open or find the image" << std::endl ;
+    return false;
+  }
+  return true;
 }
 
 void Objectness::GetBondingBox(std::vector<cv::Vec4i>& objectness_boundingbox) {

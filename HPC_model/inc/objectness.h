@@ -8,7 +8,7 @@ class Objectness {
  public:
   Objectness(std::string traning_path);
   ~Objectness();
-  void LoadImage(std::string path_image);
+  bool LoadImage(std::string path_image);
   void GetBondingBox(std::vector<cv::Vec4i>& objectness_boundingbox);
 
  private:
