@@ -56,11 +56,14 @@ UI_Window::UI_Window(QWidget *parent) : QWidget(parent) {
 }
 
 void UI_Window::LoadInputImageFile() {
-  QString file_name = QFileDialog::getOpenFileName(this, tr("Open File"),
+  input_file_name_ = QFileDialog::getOpenFileName(this, tr("Open File"),
                                                 "/home/lamluong/Desktop/data",
                                                 tr("Images (*.png *.jpg)"));
-  if (!file_name.isEmpty()) {
-    ShowInputImageFile(file_name);
+  if (!input_file_name_.isEmpty()) {
+    ShowInputImageFile(input_file_name_);
+    
+    Objectness::GetInstance()->LoadImage(input_file_name_.toUtf8().constData());
+    Objectness::GetInstance()->GetBondingBox(pos_objectness_);
   }
 }
 
@@ -70,6 +73,10 @@ void UI_Window::ShowInputImageFile(QString path_file) {
 }
 
 void UI_Window::ShowPredic() {
-  predic_result_[0]->UpdateResultImage("pho");
+  std::vector<std::string> results;
+  PredictionApi::GetInstance()->Predict(std::string(input_file_name_.toUtf8().constData()), pos_objectness_, results);
+  for (int i = 0; i < 5; i++) {
+    predic_result_[i]->UpdateResultImage(QString::fromStdString(results[i]));
+  }
 }
 

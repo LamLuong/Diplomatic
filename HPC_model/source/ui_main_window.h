@@ -14,6 +14,8 @@
 #include <QGroupBox>
 
 #include "ui_resultimage_area.h"
+#include "objectness.h"
+#include "predict_api.h"
 
 class UI_Window : public QWidget {
 
@@ -29,6 +31,8 @@ class UI_Window : public QWidget {
   void ShowInputImageFile(QString path_file);
 
  private:
+  std::vector<cv::Vec4i> pos_objectness_;
+  QString input_file_name_;
 // UI members
   QGridLayout * main_layout_;
 
