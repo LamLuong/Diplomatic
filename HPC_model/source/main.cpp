@@ -17,14 +17,14 @@ int main(int argc, char* argv[])
   
   std::vector<cv::Vec4i> pos_objectness;
 
-  Objectness g_objectness("/home/lamluong/Downloads/opencv_contrib/modules/saliency/samples/ObjectnessTrainedModel");
+  Objectness::GetInstance()->InitData("/home/lamluong/Downloads/opencv_contrib/modules/saliency/samples/ObjectnessTrainedModel");
 
-  if (!g_objectness.LoadImage(argv[1])) {
+  if (!Objectness::GetInstance()->LoadImage(argv[1])) {
     std::cout <<  "Could not open or find the image" << std::endl;
     return 1;
   }
 
-  g_objectness.GetBondingBox(pos_objectness);
+  Objectness::GetInstance()->GetBondingBox(pos_objectness);
 
   PredictionApi::GetInstance()->LoadModel();
 

@@ -1,6 +1,8 @@
 #include "objectness.h"
 
-Objectness::Objectness(std::string traning_path) {
+Objectness* Objectness::instance = new Objectness();
+
+void Objectness::InitData(std::string traning_path) {
   numobjects_ = 0;
 
   objectness_bing_ = cv::makePtr<cv::saliency::ObjectnessBING>();
@@ -8,13 +10,9 @@ Objectness::Objectness(std::string traning_path) {
   objectness_bing_->setBBResDir(traning_path + "/Results");
 }
 
-Objectness::~Objectness() {
-
-}
 bool Objectness::LoadImage(std::string path_image) {
   input_image_ = cv::imread(path_image.c_str());
   if(!input_image_.data) {
-//    cout <<  "Could not open or find the image" << std::endl ;
     return false;
   }
   return true;
