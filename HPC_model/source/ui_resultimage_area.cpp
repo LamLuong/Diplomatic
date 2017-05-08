@@ -1,6 +1,9 @@
 #include <ui_resultimage_area.h>
 
 UI_ResultImageArea::UI_ResultImageArea(QWidget *parent) : QWidget(parent) {
+
+  srand (time(NULL));
+
   QWidget *centralWidget = new QWidget(this);
   mainLayout_ = new QHBoxLayout(centralWidget);
   group_images_ = new QGroupBox();
@@ -28,7 +31,8 @@ void UI_ResultImageArea::UpdateResultImage(QString image_lable) {
   group_images_->setTitle(image_lable);
 
   for (int i = 0; i < 10; i ++) {
-    QPixmap image(list_showing_file_.at(i).filePath());
+    int iter = rand() % list_showing_file_.size();
+    QPixmap image(list_showing_file_.at(iter).filePath());
     result_image_[i].setPixmap(image.scaled(100, 100, Qt::KeepAspectRatio));
   }
 }

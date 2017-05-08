@@ -1,6 +1,9 @@
 #ifndef UI_RESULT_IMAGE_AREA_H
 #define UI_RESULT_IMAGE_AREA_H
 
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>  
+
 #include <string>
 
 #include <QIcon>
