@@ -28,7 +28,7 @@ class UI_Window : public QWidget {
   void LoadInputImageFile();
   void ShowPredic();
  private:
-  void ShowInputImageFile(QString path_file);
+  void ShowInputImageFile(ImageType type);
 
  private:
   std::vector<cv::Vec4i> pos_objectness_;
@@ -41,7 +41,10 @@ class UI_Window : public QWidget {
   QPushButton *close_button_;
 
   QLabel *origin_image_;
+  QLabel *origin_boudingbox_image_;
+
   QGroupBox *origin_image_box_;
+  QGroupBox *origin_boudingbox_image_box_;
 
   UI_ResultImageArea *predic_result_[5];
   QGroupBox *prediction_box_;

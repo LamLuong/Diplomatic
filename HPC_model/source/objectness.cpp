@@ -15,13 +15,45 @@ bool Objectness::LoadImage(std::string path_image) {
   if(!input_image_.data) {
     return false;
   }
+
+  boundingbox_image_ = input_image_.clone();
+  CaculateBoudingBox();
+  DrawBoundingBox();
   return true;
+}
+cv::Mat Objectness::GetInputImage(ImageType type) {
+  if (type == ImageType::ORIGIN_IMAGE) {
+    return input_image_;
+  }
+
+  if (type == ImageType::BOUNDINGBOX_IMAGE) {
+    return boundingbox_image_;
+  }
+}
+
+void Objectness::DrawBoundingBox() {
+  for (unsigned i = 0; i < 5; i++) {
+    cv::Vec4i pos = objectness_boundingbox_[i];
+    cv::rectangle(
+                boundingbox_image_,
+                cv::Point(pos[0], pos[1]),
+                cv::Point(pos[2], pos[3]),
+                cvScalar(0, 255, 255)
+               );
+  }
+
+}
+
+void Objectness::CaculateBoudingBox() {
+  if (objectness_bing_->computeSaliency(input_image_, objectness_boundingbox_) ) {
+    std::vector<float> values = objectness_bing_->getobjectnessValues();
+    printf("detected candidates: %lu\n", objectness_boundingbox_.size());
+    printf("scores: %lu\n", values.size());
+  }
 }
 
 void Objectness::GetBondingBox(std::vector<cv::Vec4i>& objectness_boundingbox) {
-  if (objectness_bing_->computeSaliency(input_image_, objectness_boundingbox) ) {
-    std::vector<float> values = objectness_bing_->getobjectnessValues();
-    printf("detected candidates: %lu\n", objectness_boundingbox.size());
-    printf("scores: %lu\n", values.size());
-  }
+  objectness_boundingbox.resize(objectness_boundingbox_.size());
+  memcpy(objectness_boundingbox.data(), objectness_boundingbox_.data(), 
+         sizeof(cv::Vec4i) * objectness_boundingbox_.size());
 }

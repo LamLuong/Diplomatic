@@ -20,10 +20,19 @@ UI_Window::UI_Window(QWidget *parent) : QWidget(parent) {
   origin_image_box_ = new QGroupBox(tr("Origin Image"));
   QVBoxLayout * origin_image_layout = new QVBoxLayout;
 
+  origin_boudingbox_image_ = new QLabel;
+  origin_boudingbox_image_box_ = new QGroupBox(tr("BoundingBox Image"));
+  QVBoxLayout * origin_boudingbox_image_layout = new QVBoxLayout;
+
   origin_image_box_->setCheckable(false);
   origin_image_box_->setChecked(true);
   origin_image_layout->addWidget(origin_image_);
   origin_image_box_->setLayout(origin_image_layout);
+
+  origin_boudingbox_image_box_->setCheckable(false);
+  origin_boudingbox_image_box_->setChecked(true);
+  origin_boudingbox_image_layout->addWidget(origin_boudingbox_image_);
+  origin_boudingbox_image_box_->setLayout(origin_boudingbox_image_layout);
   
 // resultimage
   QVBoxLayout *prediction_layout = new QVBoxLayout;
@@ -40,6 +49,7 @@ UI_Window::UI_Window(QWidget *parent) : QWidget(parent) {
 // main layout
   main_layout_->addLayout(button_contron_layout, 0, 0);
   main_layout_->addWidget(origin_image_box_, 1, 0);
+  main_layout_->addWidget(origin_boudingbox_image_box_, 2, 0);
   main_layout_->addWidget(prediction_box_, 0, 1, 5, 5);
 
 // Handle
@@ -60,21 +70,39 @@ void UI_Window::LoadInputImageFile() {
                                                 "/home/lamluong/Desktop/data",
                                                 tr("Images (*.png *.jpg)"));
   if (!input_file_name_.isEmpty()) {
-    ShowInputImageFile(input_file_name_);
-    
     Objectness::GetInstance()->LoadImage(input_file_name_.toUtf8().constData());
+
+    ShowInputImageFile(ImageType::ORIGIN_IMAGE);
     Objectness::GetInstance()->GetBondingBox(pos_objectness_);
+    ShowInputImageFile(ImageType::BOUNDINGBOX_IMAGE);
   }
 }
 
-void UI_Window::ShowInputImageFile(QString path_file) {
-  QPixmap pix_image(path_file);
-  origin_image_->setPixmap(pix_image.scaled(250, 250, Qt::KeepAspectRatio));
+void UI_Window::ShowInputImageFile(ImageType type) {
+  cv::Mat _input = Objectness::GetInstance()->GetInputImage(type);
+  cv::imwrite("/home/lamluong/hehe.jpg", _input);
+  cv::cvtColor(_input, _input, CV_BGR2RGB);
+  QPixmap pix_image = QPixmap::fromImage(QImage((uchar*) _input.data,
+                                         _input.cols,
+                                         _input.rows,
+                                         _input.step,
+                                         QImage::Format_RGB888));
+
+  if (type == ImageType::ORIGIN_IMAGE) {
+    origin_image_->setPixmap(pix_image.scaled(250, 250, Qt::KeepAspectRatio));
+  }
+
+  if (type == ImageType::BOUNDINGBOX_IMAGE) {
+
+    origin_boudingbox_image_->setPixmap(pix_image.scaled(250, 250, Qt::KeepAspectRatio));
+ }
 }
 
 void UI_Window::ShowPredic() {
   std::vector<std::string> results;
-  PredictionApi::GetInstance()->Predict(std::string(input_file_name_.toUtf8().constData()), pos_objectness_, results);
+  PredictionApi::GetInstance()->Predict(std::string(input_file_name_.toUtf8().constData()),
+                                        pos_objectness_,
+                                        results);
   for (int i = 0; i < 5; i++) {
     predic_result_[i]->UpdateResultImage(QString::fromStdString(results[i]));
   }
