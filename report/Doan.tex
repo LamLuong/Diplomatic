@@ -17,8 +17,18 @@
 \usepackage{enumitem}
 \usepackage{float} %keep fixgure under text
 \usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{caption}
 
 \usetikzlibrary{fit,positioning}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 
 \fancypagestyle{plain}{
   \fancyhead{} 
@@ -38,7 +48,8 @@
   {\normalfont\fontsize{14}{16.8}\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}
   {\normalfont\fontsize{14}{16.8}\bfseries}{\thesubsection}{1em}{}
-
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{14}{16.8}\bfseries}{\thesubsection}{1em}{}
 \titlespacing*{\chapter}{0pt}{0pt}{5pt}
 
 \setlist{parsep=0pt,listparindent=\parindent}
@@ -157,10 +168,290 @@ Có rất nhiều mô hình, mạng học sâu có thê giải quyết được 
 \indent Để thực hiện được (1) chúng ta cần một thuật toán để detect objects, thông thường các điểm ảnh biểu diến một đối tượng trong ảnh sẽ có một số điểm chung nhất định. Và thuật toán sử dụng cần phải tìm ra được các điểm chung đấy. Một số phương pháp có thể áp dụng như BING (Binarized Normed Gradients), deconvolution neural network...\\
 \indent Trong (2) rõ ràng đây là một bài toán phân loại dữ liệu có thể thực hiện bằng phương pháp học máy học có giám sát: Sử dụng một mạng học sâu để học các tham số phân loại các input đầu vào dựa trên một tập học cho trước.
 \chapter{\centerline{KIẾN THỨC NỀN TẢNG}}
-\section{Mạng NơRon}
-\section{Mạng nơron nhân chập}
+\section{Mạng NơRon nhân tạo}
+Mạng nơron nhân tạo là một mô phỏng của kiến trúc mạng thần kinh của con người, mạng có chức năng tương tự đó là học tập từ một tập kinh nghiệm có sẵn và áp dụng kinh nghiệm đó trong các vấn đề chưa được biết. Ta xét một nơron cơ bản:
+  \begin{figure}[H]
+  	\centering
+    \includegraphics[width=15cm]{netmodel}
+    \caption{\large Minh họa một nơron nhân tạo}
+  \end{figure}
+Theo sơ đồ trên ta thấy rằng một nơron có các thành phần cơ bản sau:
+\begin{itemize}
+\item Input: Các tín hiệu đầu vào, thường được đưa vào dưới dạng vector n chiều:\\
+	\centerline {$X = \{x_0, x_1, ..., x_m\}$}
+\item Tập liên kết (Connections): thể hiện sự liên kết của tín hiệu với nơron.
+\item Trọng số liên kết (Connection weight): thể hiện mức độ của liên kết đối với nơron, mỗi một vector tín hiệu đầu vào sẽ có một vector trọng số liên kết tương ứng:\\
+	\centerline {$W = \{w_0, w_1, ..., w_m\}$}
+\item Hàm tổng (Summation Function): Một hàm tuyến tính, tính tổng các tích giữa Input với trọng số liên kết tương ứng:\\
+	\centerline {$Net = w_0 + w_1x_1 + w_2x_2 + ... + w_mx_m = w_0 + \sum\limits_{i=1}^m w_ix_i$}
+\item Hàm truyền: Nhận đầu vào là kết quả của hàm tổng, giới hạn ngưỡng của nơron, tính toán đầu ra của nơron. ta có một số loại hàm truyền:
+	\begin{itemize}
+		\item Hàm ngưỡng (threshold function):
+		  \begin{center}
+			$Output = \begin{dcases} 1, & \text{if } Net \geq \theta\\ 0, & \text{otherwise} \end{dcases}$
+		  \end{center}	
+		Với $\theta$ là giá trị ngưỡng. Hàm có đặc điểm là không liên tục và không có đạo hàm. Thường được sử dụng trong các bài toán chỉ có 2 kết quả (có - không, đúng - sai ...).
+		\item Hàm logic ngưỡng (threshold Logic function):
+     	  \begin{center}
+			$Output = 
+				\begin{dcases} 
+					0, & \text{if } Net < -\theta \\
+					\alpha(Net + \theta), & \text{if } -\theta \leq Net \leq \frac{1}{\alpha}-\theta\\
+					1, & \text{if } Net > \frac{1}{\alpha}-\theta
+				\end{dcases}$
+		  \end{center}
+		  Còn được gọi là  hàm tuyến tính bão hòa, là sự kết hợp của hàm tuyến tính và giới hạn chặ. Đặc điểm là liên tục nhưng không có đạo hàm.
+		\item Hàm Sigmoid:
+		  \begin{center}
+			$Output = \dfrac{1}{1 + e^{-\alpha(Net + \theta)}}$
+		  \end{center}
+		  Là hàm liên tục và có đạo hàm, cho giá trị đầu ra trong khoảng (0, 1) và được dùng phổ biến nhất. Đạo hàm của hàm Sigmoid chính là hàm Sigmoid. Được sử dụng trong các bài toán dự đoán nhiều kết quả.
+		\item Hàm Hyperbolic tangent:
+		   \begin{center}
+			$Output = \dfrac{1 - e^{-\alpha(Net + \theta)}}{1 + e^{-\alpha(Net + \theta)}}
+					= \dfrac{2}{1 + e^{-\alpha(Net + \theta)}} - 1$
+		  \end{center}  
+		 Giống hàm sigmoid, liên tục và có đạo hàm, cho giá trị đầu ra trong khoảng (-1, 1).  
+	\end{itemize}
+	\item Độ lệch (bias): $w_0$ là một hệ số để điều chỉnh kết quả đầu ra của hàm tổng theo ý muốn mà không phải thay đổi giá trị của trọng số liên kết (sẽ đề cập ở bên dưới), tránh gấy ảnh hưởng tới kết quả tính của nơron khác. Ví dụ muốn thay đổi giá trị kết quả đầu ra thay vì phải thay đổi giá trị bộ trọng số, ta có thể điểu chỉnh giá trị độ lệch bias. Mặt khác, họ các hàm $Net = w_0 + \sum\limits_{i=1}^m w_ix_i$ có thể chia các tập ví dụ thành nhiều lớp, họ các hàm $Net = \sum\limits_{i=1}^m w_ix_i$ do đi qua gốc $O(0; 0)$ trong nhiều trường hợp không thể phân tách được các ví dụ.
+\end{itemize}
 
+\indent Như vậy, từ input đầu vào X, thông qua các hàm xử lý cùng với các trọng số liên kết, một nơron cho ra một kết quả đầu ra. Kết quả đầu ra này có thể là kết quả cuối hoặc là đầu vào của một nơ ron khác.
+\section{Cấu Trúc một mạng Nơron}
+\indent Mạng nơron nhân tạo được cấu trúc theo các tầng, mỗi tầng chứa một nhóm các nơron: (Ảnh minh họa)
+\begin{itemize}
+\item Tầng đầu vào(Input layer).
+\item Tầng đầu ra(Ouput layer).
+\item Tần ẩn (Hiden Layer) có hoặc không cần tầng này, là tầng nằm giữa tầng đầu vào và đầu ra, các nơron ở tầng này không trực tiếp tương tác với môi trường ngoài mà đầu vào của nơ ron thường là kết quả đầu ra của nơ ron khác.
+\end{itemize}
+
+\indent Cách thức kết nối của các nơ ron trong mạng xác định kiến trúc (topology) của mạng. Một mang nơ ron được gọi là đầy đủ nếu như mọi đầu ra của nơ ron từ một tầng liên kết với mọi nơron ở tầng kế tiếp, còn ngược lại, đầu ra của một số nơ ron chỉ liên kết với một sô nơ ron khác được gọi là kết nỗi cục bộ. Có nhiều kiểu mạng nơ ron nhưng ta xet các loại chính sau:
+\begin{itemize}
+\item Mạng nơ ron lan truyền tiến: kết quả của một nơ ron là đầu vào của nơ ron tâng kế tiếp, đầu ra của một tầng bất kì không ảnh hưởng tới tầng đó, các tín hiệu di chuyển theo đường thằng, không có kết nối ngược lại từ các tầng phía sau về các tầng ở phía trước.
+\item Mạng nơ ron lan truyền ngược (): kiểu kiến trúc có sự kết nối từ nơ ron ở tầng đầu ra về nơ ron ở tầng đầu vào, kiểu kiến trúc này lưu lại trạng thái trước đó vì thế kêt quả của trạng thái tiếp theo không chỉ phụ thuộc vào các tín hiệu đầu vào mà còn phụ thuộc vào trạng thái trước đó của mạng.
+\end{itemize}
+\section{Huấn luyện mạng nơ ron nhân tạo}
+Xét một tập dữ liệu X được dùng để huấn luyện mạng nơ ron, tập Y là tập kết quả của tập dữ liệu X. Ta gọi tập X ở trên là tập học (traning set) còn tập Y là các nhãn tương ứng. Nhiệm vụ của việc huấn luyện mạng nơ ron là điều chỉnh các trọng số liên kết trong tập W của nó sao cho đối với mọi đầu vào $x_i$ từ tập X mạng cho ra một kết quả $y_i$ tương ứng ở tập Y.
+\subsection{Các Phương Pháp học}
+\begin{itemize}
+	\item Học không giám sát:\\
+	\indent Là kiểu học mà tập X chưa biết trước các nhãn tương ứng của nó. Nhiệm vụ của mạng nơ ron lúc này là tìm cách chia tập dữ liệu ban đầu thành các nhóm, mỗi nhóm chứa các đặc trưng giống nhau.\\
+	\indent Học không giám sát được sử dụng khi chưa biết số lượng các lớp cần được phân loại, việc chia ra thành các lớp phụ thuộc vào tiêu chuẩn đánh giá độ tương tự giữa các dữ liệu.
+	\item Học có giám sát:\\
+	\indent Là kiểu học mà tập học X đã biết trước số lượng nhãn cần phân cụm và nhãn tương ứng của từng dữ liệu. Nhiệm vụ của mạng nơ ron lúc này là lưu lọc ra các đặc trưng của từng dữ liệu trong X và gán tương ứng từng đặc trưng của dữ liệu đó với nhãn trong Y. Khi có một dữ liệu mới đến không nằm trong tập dữ liệu trong X, mạng nơron phải trích xuất được các đặc trưng của dữ liệu mới đó rồi so sánh để lấy ra được nhãn cho dữ liệu.\\
+	\indent Học có giám sát được sử dụng khi mà ta có tập học X đủ lớn để học được nhiều nhất có thể đặc trưng của từng nhãn.
+\end{itemize}
+\subsection{Huấn luyện mạng nơron theo phương pháp học có giám sát}
+\indent Để huấn luyện cho một mạng nơron theo phương pháo học có giám sát ta cần thực hiện các bước sau:\\
+\begin{itemize}
+\item \textit{Bước 1: }Xây dựng cấu trúc mạng nơron, vói số nơron input đầu vào là số chiều của vector đầu vào, số nơron đầu ra là số lớp cần gán nhãn. Việc lựa chọn số lượng nơron tầng ẩn và số tầng ẩn phụ thuộc vào từng trường hợp cụ thể.
+\item \textit{Bước 2: }Đưa từng vector trong tập mẫu vào mạng.
+\item \textit{Bước 3: }Thực hiện các phép tính toán lấy ra được vector đầu ra của mạng.
+\item \textit{Bước 4: }So sánh vector là kết quả mà mạng tạo ra với đầu ra mong muốn (kế quả mà đầu vào đã được gán nhãn sẵn trong tập huấn luyện), 
+\item \textit{Bước 5: }Đánh giá lỗi của kết quả tạo ra, hiệu chỉnh các trọng số lại để với cùng đầu vào như ban đầu, kết quả mạng tính toán ra sát với kết quả được gán nhãn nhất có thể.
+\item \textit{Bước 6: }Thực hiên lại các bước 2, 3, 4, 5 cho tới khi đạt trạng thái hội tụ, trạng thái hội tụ ở đây là trạng thái các kết quả đã đạt một ngưỡng nào đó đặt ra từ trước hoặc đem trọng số áp dụng lên một bộ dữ liệu test mà kết quả trên bộ test đấy không tăng thêm được nữa.
+\end{itemize}
+\indent Ở \textit{Bước 5} trên, lỗi được đánh giá thường là lỗi ở trên một tập mẫu được gọi là tập validation, tập này chỉ được sử dụng để đánh giá lỗi mà không tham gia vào việc thay đổi bộ trọng số, quá trình học sẽ kết thúc nếu độ chính xác của mô hình trên tập validation là tối đa hoặc lỗi là tối thiểu.
+\section{Mạng nơron nhân chập}
+\subsection{Khái niệm}
+\indent Mô hình mạng nơron nhân tạo ra đời đã được áp dụng nhiều trong các bài toán nhận. Tuy nhiên mạng nơron nhân tạo thông thường không phát huy tốt hiệu quả khi xử lý các dữ liệu lớn như hình ảnh, video... Một tấm ảnh xám có kích thước 32x32 pixel sẽ cho ra vector đặc trưng 1024 chiều, còn đối với ảnh màu có cùng kích thước sẽ là 3072 chiều. Vector có số chiều như vậy khá là lớn đối với mạng nơron thông thường, để xử lý được mạng nơron cũng phải có 3072 bộ trọng số tương  giữa tầng Input và nơron tầng ẩn. Như thế đối với mạng có nhiều node hoặc có nhiều tầng ẩn thì số lượng trọng số sẽ càng bị nhân rộng thêm. Với ảnh có kích thước bình thường (vẫn lớn hơn ảnh 32x32 rất nhiều) thì việc tính toán trên mạng sẽ gặp rất nhiều khó khăn.
+\indent Mặt khác để ý rằng việc liên kết mọi điểm ảnh vào một node trong mạng là dư thừa bởi vì đối với dữ liệu ảnh thì các điểm ảnh ở gần nhau mới có sự phụ thuộc (điểm tương đồng) với nhau, các điểm ảnh càng xa nhau thì càng ít phụ thuộc vào nhau. Do đặc trưng trên nên người ta nghĩ ra việc thay vì kết nối toàn bộ các điểm ảnh với một node thì chỉ có một phần cục bộ trong ảnh được kết nối tới node ở lớp tiếp theo, gọi là kết nối cục bộ (Local Connectivity). Hệ thống dựa trên các lớp của mô hình sẽ học ra được các đặc trưng của ảnh để việc phân lớp được tiến hành hiệu quả.
+  \begin{figure}[H]
+  	\centering
+    \includegraphics[width=15cm]{Convolution}
+    \caption{\large Minh họa một mạng CNN}
+  \end{figure}
+\indent Mạng nơron nhân chập hay mạng convolution neural network hay gọi tắt là CNN là một loại hình của mạng nơron lan truyền tiến, nó gồm có các tầng chính sau: Convolutional, Pooling, Revolution Liner Unit (RELU) và Fully Connected. Tùy từng mục đích của bài toán mà người ta dựng lên các mô hinh với số tầng và thứ tự giữa các tầng là khác nhau.
+
+\subsection{Các tầng của CNN}
+\subsubsection{Convolution}
+\indent Đây là tầng đặc trưng nhất của CNN, thay vì kết nối toàn bộ các điểm ảnh, mô hình sẽ tạo ra các bộ lọc (hay còn gọi là cửa sổ trượt) có kích thước nhỏ hơn so với ảnh, thường là 3x3 hoặc là 5x5 áp vào vùng trong góc ảnh rồi tiến hành phép nhân chập (convolution). Bộ lọc sẽ được trượt dọc theo biên rồi trượt qua toàn bộ các vùng của ảnh. Mỗi lần trượt, bộ lọc sẽ dịch chuyển một bước trượt (stride). \\
+\indent Công thức tích chập giữa hàm ảnh f(x, y) và bộ lọc k(x, y) (kích thước mxn):
+\begin{center}
+$k(x, y) * f(x, y) = \mathlarger{\sum\limits_{u=-\frac{m}{2}}^{\frac{m}{2}}\sum\limits_{u=-\frac{n}{2}}^{\frac{n}{2}}}k(u, v)f(x-u, y-v) $
+\end{center}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15cm]{convolution1}
+   \caption{\large Nhân chập ảnh với bộ lọc.}
+\end{figure}
+
+\indent Như vậy với một bức ảnh 32x32 và một fitter 3x3 ta sẽ có một ảnh mới kích thước 32x32 (việc padding bộ lọc đã đảm bảo cả điểm ảnh ở ngoài biên bức ảnh đều được thực hiện nhân chập) là kết quả của việc nhân chập ảnh gốc với bộ lọc. Số lượng ảnh trả ra cho các lớp tiếp theo bằng với số lượng filter nhân chập với ảnh. Các filter ban đầu được khởi tạo ngẫu nhiên và sẽ được điều chỉnh trong quá trình học. Như vậy thực chất của việc học trong mạng CNN là tìm ra các filter thích hợp nhất để lọc ra các đặc trưng của ảnh.
+\subsubsection{Rectified Linear Unit - RELU}
+\indent Được sử dụng ngay sau tầng Convolutionm dùng hàm kích hoạt $f(x) = max(0, x)$ có nhiệm vụ chuyển toàn bộ giá trị âm trong kết quả của việc nhân chập thành giá trị 0. Hàm này tạo nên tính phi tuyến của mô hình. Có thể sử dụng các hàm phi tuyến thông dụng như sigmoid, tanh nhưng hàm max được đánh giá là dễ cài đặt và hiệu quả hơn.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=12cm]{relu}
+   \caption{\large Rectified Linear Unit.}
+\end{figure}
+\subsubsection{Pooling}
+\indent Tầng này sử dụng một cửa sổ trượt quét qua toàn bộ ảnh dữ liệu, mỗi lần trượt theo một bước trượt (stride) cho trước. Khác với lớp Convolutional, lớp Pooling không tính tích chập mà tiến hành lấy mẫu (subsampling). Khi cửa sổ trượt trên ảnh, chỉ có một giá trị được xem là giá trị đại diện cho thông tin ảnh tại vùng đó (giá trị mẫu) được giữ lại. Các phương thức lấy phổ biến trong lớp Pooling là MaxPooling ( lấy giá trị lớn nhất), MinPooling (lấy giá trị nhỏ nhất) và AveragePooling (lấy giá trị trung bình).
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=12cm]{pooling}
+   \caption{\large Max Pooling.}
+\end{figure}
+
+\indent Xét một ảnh có kích thước 32x32 và lớp Pooling sử dụng filter có kích thước 2x2 với bước trượt stride = 2, phương pháp sử dụng là MaxPooling. Filter sẽ lần lượt duyệt qua ảnh, với mỗi lần duyệt chỉ có giá trị lớn nhất trong 4 giá trị nằm trong vùng cửa sổ 2x2 của filter được giữ lại và đưa ra đầu ra. Như vậy sau khi qua lớp Pooling, ảnh sẽ giảm kích thước xuống còn 16x16 (kích thước mỗi chiều giảm 2 lần).
+
+\subsubsection{Fully Connected(FC)}
+\indent Tầng này tương tự với lớp trong mạng nơ-ron truyền thẳng, các giá trị ảnh được liên kết đầy đủ vào node trong lớp tiếp theo. Sau khi ảnh được xử lý và rút trích đặc trưng từ các lớp trước đó, dữ liệu ảnh sẽ không còn quá lớn so với mô hình truyền thẳng nên ta có thể sử dụng mô hình truyền thẳng để tiến hành nhận dạng. Tóm lại, lớp fully-connected đóng vai trò như một mô hình phân lớp và tiến hành dựa trên dữ liệu đã được xử lý ở các lớp trước đó.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=11cm]{fully}
+   \caption{\large Mạng CNN đầy đủ các tầng}
+\end{figure}
+\subsection{Huấn luyện mạng CNN}
+\indent Một mạng nơ-ron tích chập được hình thành bằng cách ghép các lớp nêu trên lại với nhau. Mô hình bắt đầu với lớp Convolutional. Tầng RELU thường luôn được cài đặc ngay sau tầng Convolutional hoặc thậm chí kết hợp cả hai tầng này thành một tầng. Các tầng tiếp theo có thể là Convolutional hay Pooling tùy theo kiến trúc mà ta muốn xây dựng. Cuối cùng sẽ là lớp fully-connected để tiến hành phân lớp.\\
+\indent Để xem mô hình này hoạt động như thế nào ta có thể xét một kiến trúc sau đây:
+\begin{center}
+\textit{Conv1 (with RELU) – Pooling – Conv2 (with RELU) – Pooling – FC – FC}
+\end{center}
+\indent Lấy một hình ảnh cần nhận dạng có kích thước 32x32 như sau (lấy từ bộ dữ liệu cifar-10):
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=11cm]{origin_cifa}
+   \caption{\large một ảnh đầu vào}
+\end{figure}
+\indent Hình ảnh sẽ được đưa vào tầng Conv1 (Convolutional kết hợp RELU) gồm 32 filter có kích thước 3x3, mỗi filter sẽ được dùng để tính tích chập với ảnh và cho ra một ảnh kết quả tương ứng. Với 32 filter ta sẽ có 32 ảnh kết quả như sau:
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=13cm]{conv}
+   \caption{\large một ảnh đầu vào}
+\end{figure}
+
+\indent Mỗi ảnh trên đều có kích thước tương ứng là 32x32. Sau đó, cả 32 ảnh này đều được cho qua lớp Pooling và kết quả trả ra sẽ là 32 ảnh có kích thước 16x16.\\
+\indent Tiếp tục dữ liệu sẽ đi vào lớp Conv2. Tương tự như Conv1, ảnh sẽ được tính tích chập với filter và trả ra kết quả. Lớp Pooling tiếp theo sẽ tiếp tục giảm kích thước của ảnh xuống còn 8x8. Với kích thước đủ nhỏ như vậy, lớp Fully-connected tiếp theo sẽ xử lý và đưa ra kết quả phân lớp hay kết quả nhận dạng.\\
+\indent Tương tự như mạng nơ-ron truyền thẳng, mạng nơ-ron tích chập cũng là một mô hình học cho nên khởi tạo ban đầu cho các trọng số trong mạng là ngẫu nhiên và sẽ được điều chỉnh thông qua quá trình học. Thuật toán học cho mạng nơ-ron tích chập cũng tương tự như mạng nơ-ron truyền thẳng là thuật toán lan truyền ngược sử dụng gradient descent; chỉ khác nhau ở chỗ mạng tích chập không liên kết đầy đủ nên độ lỗi ở mỗi lớp chỉ tính dựa vào một phần các node trong lớp tiếp theo chứ không phải toàn bộ.
+\section{Detect objects}
+\indent Mạng CNN mang lại một khả năng rất mạnh trong việc trích xuất ra các đặc trưng làm đại diện cho ảnh, tuy nhiên đối với các ảnh đa nhãn bao gồm nhiều thành phần từ các đối tượng, vị trí và tỉ lệ khác nhau thì mạng CNN chưa tối ưu được điều đó. Như vậy để thực hiện gán nhãn được cho các loại ảnh đa nhãn trước hết phải trích xuất được các đối tượng ra khỏi ảnh thành các đối tượng đơn lẻ (semantic segmentation). Có nhiều cách để thực hiện việc trích xuất trên, em xin đề xuất ra hai giải pháp:
+
+\vspace{0.15cm}
+\indent \textbf{Mạng giải chập (Deconvolution)}
+
+\vspace{0.15cm}
+\indent Ý tưởng của mô hình là ở tần gần cuối của một mạng nơron nhân chập (trước tầng Fully Connected) chúng ta đã thu được các đặc trưng của ảnh (feature) sau đó các feature này được làm đầu vào cho một mạng kết tiếp được gọi là tầng giải chập. \\
+\indent Tầng giải chập này được là phép đi ngược lại của tầng nhân chập, tức là từ các feature đầu vào, kết quả của tầng này chính là vùng ảnh đại diện cho đối tượng mà feature đó đại diện. Tầng giải chập này thực hiện các bước để tìm ra các pixel-wish là các điểm ảnh được dự đoán từ các feature, dựng lại được bộ khung và đường bao của các object có trong ảnh.\\
+\indent Mô hình được xây dựng như sau:
+
+\indent \textit{Bước 1:} Từ mô hình VGG 16, traning trên trên tập PASCAL VOC 2012, lúc này ta đã lưu được các bộ hệ số (tức là các kernel hay các filter như đã đề cập ở phần CNN).\\
+\indent \textit{Bước 2:} Thiết lập ngẫu nhiên các cửa sổ kích thước cố định (fixed-size receptive field) trên ảnh đầu vào, thực hiện nhận chập các filter đã lấy được trong traning để lấy ra được các feature của ảnh.\\
+\indent \textit{Bước 3:} Đưa các feature trên vào mạng giải chập, từ đó lấy ra được các pixel-wish, qua đó lấy được vùng object.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15cm]{decnn}
+   \caption{\large Mô hình mạng giải chập}
+\end{figure}
+\indent \textit{Nhận xét:}
+\begin{itemize}
+\item Mô hình trên có ưu điểm là detect object khá tốt, vẽ được cả đường bao xung quanh object.
+\item Cần khá nhiều bước traning: Traning bước đầu
+\item Trong bài toán nhận dạng thì việc phân đoạn chính xác đến từng đường biên của đối tượng là không cần thiết, có chỉ cần một hình chữ nhật bao quanh đối tượng là đủ.
+\end{itemize}
+
+\indent \textbf{Mô hình HCP (Hypothesis Convolution Pooling)}\\
+\indent Mô hình HCP dựa trên khả năng phân loại đơn nhãn cao của mạng CNN, cấu trúc của mô hình như sau:
+\begin {itemize}
+\item Một số lượng objects được coi như là các đầu vào, các objects này được tạo ra bằng cách sử dụng các công nghệ detect object, không cần quá chính xác đến đường bao của object mà chỉ cần tạo ra một cửa sổ bao quanh đối tượng là đủ. Các thuật toán có thể sử dụng như binarized normed gradients (BING), EdgeBoxes …
+\item Một mạng CNN để thực hiện việc prediction từ các inputs đầu vào, kết quả sau tầng này chúng ta có các nhãn thô từ ảnh đầu vào.
+\item Dùng một tầng với tên gọi là pooling, thực hiện các đánh giá từ các nhãn thô để đưa ra các nhãn cuối cùng cho ảnh đầu vào.
+\end{itemize}
+\newpage
+\indent Với yêu cầu đặt ra là chưa cần độ chính xác quá cao và đối với đồ ăn thì ta chỉ cần lấy được một vùng hình chữ nhật là đã có thể lấy được đĩa (bát) món ăn nên trong đề tài này em đã lựa chọn mô hình HPC để thực hiện. Sau đây là giới thiệu chi tiết hơn về mô hình.
+\section{Giới thiệu mô hình HPC và mạng GoogleNet}
+\indent Mô hình HPC có cấu trúc như sau:
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15cm]{hpc}
+   \caption{\large Tổng quan của mô hình HCP (hypotheses cnn pooling)}
+\end{figure}
+\indent Như đã trình bày tóm tắt ở trên, một số lượng các vùng hình chữ nhật được đánh giá là có đối tượng cần gán nhãn được lựa chọn (hypotheses) bởi một mô hình phát hiện đối tượng.Chuyển các objects phát hiện được sang thành các vector rồi đưa chúng vào một mạng CNN (chi tiết về mạng CNN này e sẽ trình bày ở phần sau). Mạng CNN này sẽ được cho traning trước từ một tập dữ liệu đơn nhãn cho trước (ImageNet), sau đó điều chỉnh bằng tập dữ liệu đa nhãn (VOC PASCAN). Các bước được thực hiện chi tiết như sau:
+\subsection{Hypotheses Extraction}
+Như đã trình bày ở trên, HCP nhận đầu vào là các vùng ảnh chứa object đơn lẻ. Như vậy hiệu năng của HCP phụ thuộc lớn vào việc lấy được các đối tượng, quá trình lấy được các objects phải đảm bảo:\\
+\indent \textbf{Độ chính xác cao trong việc detect object}: Mô hình HCP được để xuất với giả định input đầu vào là một vùng ảnh bao quát toàn bộ object đơn nhãn, nó yêu cầu độ chính xác cao trong việc lấy ra các input này.\\
+\indent \textbf{Chỉ lấy một lượng cần thiết các đối tượng:} Việc lấy ra các số lượng object phụ thuộc vào mức độ tính toán của máy tính cũng như bộ nhớ đệm RAM vì sau khi lấy ra được chúng sẽ được đưa đồng thời vào một mạng CNN, sẽ yêu cầu một lượng lớn tài nguyên tính toán.\\
+\indent \textbf{Việc Tính toán phải đạt hiệu quả cao:} Việc lấy ra được các object là công việc tính toán đầu tiên của mô hình HCP và nó ảnh hưởng đến độ chính xác của toàn bộ mô hình. Tóm lại, một thuật toán detect object tốt có thể sinh ra các đối tượng với độ chính xác cao, tăng
+\subsection{Training HCP}
+Trong HPC bất cứ mô hình CNN nào đều cũng có thể triển khai thiết kế cho tầng CNN. Tuy nhiên để mô hình CNN hoạt động có hiệu quả thì trước hết phải có một tập dữ liệu khá lớn để mạng traning,
+\subsection{Phân Loại Đa Nhãn}
+
+\chapter{\centerline{CÀI ĐẶT THỰC NGHIỆM ĐỒ ÁN}}
+\section{Bộ dữ liệu}
+\subsection{Giới thiệu về bộ dữ liệu}
+\indent Bộ dữ liệu được sử dụng trong đồ án là bộ dữ liệu tên là Food-101 Dataset. Ảnh ở trong bộ dữ liệu này được tải từ trang mạng xã hội FoodSpotting \url{http://www.sharelatex.com}, trang mạng cho phép người dùng chụp các bức ảnh đồ ăn mà họ muốn, đánh dấu địa điểm chụp, loại đồ ăn và ghi chú về món ăn.
+\indent Bộ dữ liệu có tất cả 101 món ăn mà tác giả cho là các món phổ biến nhất, mỗi một món ăn sẽ có 1000 ảnh về món ăn. Đối mới mỗi món ăn, tác giả chọn ngẫu nhiên 750 ảnh được dùng cho tập traning, 250 ảnh được dùng cho tập testing. Trong bộ ảnh có một vài điểm lỗi do việc đánh sai nhãn hoặc do sự nhầm lẫn màu sắc giữa các món ăn (một số món ăn khác tên nhau nhưng do hình dạng hoặc màu sắc giống nhau). Nhưng tác giả vẫn tin tưởng rằng đối với các thuật toán về thị giác máy tính thông thường hoàn toàn có thể đối phó được với các lỗi nhỏ này.\\
+\indent Tất cả ảnh trong bộ dữ liệu đưuọc điều chỉnh lại kích thước sao cho chiều dài lớn nhất là 512pixel. Như vậy, bộ dữ liệu bao gồm tổng công 101000 bức ảnh về các món ăn thông dụng trên thế giới.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15.5cm]{lable}
+   \caption{\large Các nhãn trong bộ Food 101}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15.5cm, height=25cm]{detail}
+   \caption{\large Các ảnh trong bộ Food 101}
+\end{figure}
+\subsection{Chia bộ dữ liệu}
+\indent Trong đồ án của mình e chia bộ dữ liệu khác so với tác giả, dể đảm bảo tính ngẫu nhiên trong lựa chọn dữ liệu, trong bộ data em cũng chọn ngẫu nhiên ra 700 ảnh mỗi nhãn làm tập traning, 100 ảnh làm tập validation 200 ảnh còn lại làm tập testing, cách chia như vậy vì em muốn tăng số lượng ảnh test để cho ra độ chính xác cao nhất về mô hình.
+\subsection{Data Augmentation}
+\indent Với bộ data 10100 ảnh trông có vẻ khá đồ sộ nhưng  khi đem vào thực tế traning thì con số này vẫn còn khá nhỏ, vì thế e đề xuất sử dụng phương pháp argument data, mục đích của phương pháp này là từ một ảnh ban đầu ta thực hiện một số bước chuyển đổi ảnh để ảnh có vẻ khác so với ban đầu, tức là nếu dùng thị giác con người trông nội dung hai bức ảnh có thể khác nhau nhưng đối với máy tính thì khi nhìn dưới dạng nhị phân thì nó lại là hai ảnh khác biệt nhau hoàn toàn, như thế mô hình sẽ không bao giờ đọc nội dung một dữ liệu hai lần. \\
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering,margin=2cm}
+    \includegraphics[width=15.5cm]{argunment}
+   \caption{\large Các ảnh tuy cùng biểu diễn một nội dung  \newline nhưng đối với máy tính chúng đều là các dữ liệu độc lập khác nhau.}
+\end{figure}
+\indent Trong đồ án này em thực hiên augment dữ liệu bằng cách xoay xoay ảnh một góc $45^o$ , tiến hành cắt ảnh theo chiều dài vài chiều rộng mỗi chiều một đoạn bằng 0.125 trên chiều dài/rộng. Như vậy từu một ảnh ban đầu ta có được thêm $360 : 45 = 8$ ảnh, việc augment được thực hiện realtime, tức là trước khi đưa một ảnh vào trong mô hình chứ không thực hiện lưu trữ physic các dữ liệu sinh ra thêm này.
+ 
+\section{Cài đặt HPC}
+\subsection{Cài đặt thuật toán Binarized Normed Gradients}
+\indent Thuật toán BING khá phức tạp để cài đặt nhưng thư viện opencv đã cung cấp cho chúng ta một API là ObjectnessBING để thực hiên thuật toán:
+\begin{lstlisting}
+class CV_EXPORTS ObjectnessBING : public Objectness {
+ public:
+
+  ObjectnessBING();
+  ~ObjectnessBING();
+
+  void read();
+  void write() const;
+
+  vector<float> getobjectnessValues();
+  void setTrainingPath(string trainingPath);
+  void setBBResDir(string resultsDir);
+
+ protected:
+  bool computeSaliencyImpl(const InputArray src,OutputArray dst);
+
+};
+\end{lstlisting}
+
+\indent Đầu ra của API là một mảng các tọa độ của cửa sổ (bao gồm tọa độ trên cùng bên trái và dưới cùng bên phải). Các tọa độ này đã được sắp xếp theo thứ tự score (tọa độ nào mà có khả năng có object càng lớn thì điểm càng cao).\\
+\indent Dưới đây là một kết quả đầu ra của thuật toán BING:
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering,margin=2cm}
+    \includegraphics[width=12.5cm]{bing}
+   \caption{\large Đường màu vàng là các vùng BING detect được là có đối tượng ở trong đó.}
+\end{figure}
+\indent Trong khuôn khổ đồ án, em chỉ lấy ra năm vùng có điểm số cao nhất để lấy hypothese đưa vào mạng CNN, như vậy sẽ gặp một số trường hợp lỗi là có một số vùng chứa cùng một object như thế mô hình sẽ đưa ra một số nhãn giống nhau. Nguyên nhân là do điều kiện về phần cứng (máy không có card đồ họa) nếu đưa quá nhiều hypothese vào CNN việc tính toán ở phần prediction sẽ mất rất nhiều thời gian.
+\subsection{Cài đặt Share CNN}
+\indent Theo[1], mạng Share CNN sẽ được cài đặt bằng mạng VGG16, nhưng bài báo ra đời năm xxx và sau năm đó mạng GoogleNet ra đời có độ chính xac cao hơn so với VGG16 nên trong đồ án này em lựa chọn mạng GoogleNet để làm mạng Share CNN. \\
+\indent Đối với GoogleNet, mạng được traning trên bộ ImageNet với 1000 classes, do bộ FoodData chỉ có 101 lớp nên cần chỉnh sửa lại mô hình, tức là tầng Output của mô hình chỉ có 101 nơron thây vì 1000 nơron như mô hình ban đầu.\\
+\indent Thay vì khởi tạo random, kế thừa từ việc mô hình này đã được traning sẵn từ bộ dữ lớn ImageNet, các trọng số của mô hình được khởi tạo là bộ trọng số của GoogleNet khi traning trên ImageNet.
+\indent Mô hình sẽ được traning lại từ đầu, tức là khởi tạo là bộ trọng số từ tập ImageNet nhưng vẫn phải cho học lại với tập Food-101 để cập nhật lại các filters lọc features. Nguyên nhân là do bộ ImageNet chứa rất ít dữ liệu về đồ ăn, nếu giữ các features học được từ ImageNet mà áp dụng phương pháp fine-turning (Phương pháp mà ta chỉ traning lại tầng FullyConnected) thì sẽ cho kết quả khá thấp.\\
+\indent Các ảnh đầu vào phải qua bước tiền xử lý, vì mạng GoogleNet có input đầu vào là mảng 2 chiều 299x299 nên ảnh đầu vào cần được resize về kích thước đó. Các trọng số sẽ được cập nhật theo từng epoch, lựa chọn batch size là 32.\\
+\indent Thiết lập điều kiện dừng của mô hình
+
+
+\chapter{\centerline{KẾT QUẢ ĐẠT ĐƯỢC}}
+
+\chapter{\centerline{KẾT LUẬN}}
 \end{document}
+
+
 
 
 

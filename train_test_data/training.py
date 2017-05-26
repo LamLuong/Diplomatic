@@ -113,7 +113,7 @@ model.fit_generator(train_generator,
                     verbose=1)
 					
 for layer in model.layers[:172]:
-    layer.trainable = False
+    layer.trainable = True
 for layer in model.layers[172:]:
     layer.trainable = True
 
