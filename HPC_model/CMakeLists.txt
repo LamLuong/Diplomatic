@@ -6,6 +6,8 @@ find_package(OpenCV 3 REQUIRED)
 find_package(PythonLibs 2.7 REQUIRED)
 FIND_PACKAGE(Boost 1.54 COMPONENTS python REQUIRED)
 
+add_definitions(-DOBJECTNESS_TRAIN=${OBJECTNESS_TRAIN})
+
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.

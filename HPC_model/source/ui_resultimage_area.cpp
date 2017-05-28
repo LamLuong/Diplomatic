@@ -10,7 +10,7 @@ UI_ResultImageArea::UI_ResultImageArea(QWidget *parent) : QWidget(parent) {
   group_images_->setCheckable(false);
   group_images_->setChecked(true);
 
-  data_dir.cd("/home/lamluong/Desktop/data/pho");
+  data_dir.cd("../../train_test_data/data/test/pho");
 
   QHBoxLayout* image_layout = new QHBoxLayout();
   for (int i = 0; i < 10; i ++) {
