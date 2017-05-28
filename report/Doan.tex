@@ -20,7 +20,9 @@
 \usepackage{hyperref}
 \usepackage{caption}
 
+\graphicspath{ {figures/} } %list table and image
 \usetikzlibrary{fit,positioning}
+
 
 \usepackage{hyperref}
 \hypersetup{
@@ -42,7 +44,7 @@
 
 
 \titleformat{\chapter}[block]
-  {\normalfont\LARGE\bfseries}{\chaptertitlename\ \thechapter:}{0pt}{\Large}[{\vspace{0ex}\titlerule[2pt]}]
+  {\normalfont\LARGE\bfseries}{\chaptertitlename\ \thechapter:}{20pt}{\Large}[{\vspace{0ex}\titlerule[2pt]}]
 
 \titleformat{\section}
   {\normalfont\fontsize{14}{16.8}\bfseries}{\thesection}{1em}{}
@@ -72,23 +74,28 @@
 \vspace{0.12in}
 {\fontfamily{phv} \fontsize{20pt}{24}\selectfont {NGÀNH CÔNG NGHỆ THÔNG TIN}}\\
 \vspace{1.3in}
-{\fontsize{22pt}{26.4}\selectfont {\textbf{XÂY DỰNG MÔ HÌNH HPC TRONG ỨNG DỤNG GÁN ĐA NHÃN ẢNH}}}
+{\fontsize{22pt}{26.4}\selectfont {\textbf{XÂY DỰNG MÔ HÌNH HCP TRONG ỨNG DỤNG GÁN ĐA NHÃN ẢNH}}}
 \end{center}
 
 
-\vspace{0.45in}
+\vspace{0.7in}
 \begin{flushleft}
-{\hspace{1.8in}{\fontsize{14pt}{16.8}\selectfont {Sinh viên thực hiện:\hspace{0.12in} \textbf{Lương Tiến Lâm}}}}\\
-{\hspace{1.8in}\hspace{1.215in}\fontsize{14pt}{16.8}\selectfont {Lớp: CNTT-TT 2.04 - K57}}\\
-{\hspace{1.8in}{\fontsize{14pt}{16.8}\selectfont {Giáo viên hướng dẫn: TS \textbf{Nguyễn Thị Oanh}}}}\\
+{\hspace{1.8in}{\fontsize{14pt}{16.8}\selectfont {Sinh viên thực hiện:\hspace{0.12in} \textbf{Lương Tiến Lâm}}}}
+
+\vspace{1mm}
+{\hspace{1.8in}\fontsize{14pt}{16.8}\selectfont {Lớp: CNTT-TT 2.04 - K57}}
+
+\vspace{1mm}
+{\hspace{1.8in}{\fontsize{14pt}{16.8}\selectfont {Giáo viên hướng dẫn: TS. \textbf{Nguyễn Thị Oanh}}}}
 \end{flushleft}
 \end{center}
 \vspace{1.9in}
 \begin{center}
 {\fontsize{16pt}{1}\selectfont Hà Nội 5-2017 }\\
 \end{center}
-
 \newpage
+\pagenumbering{roman}
+\addcontentsline{toc}{chapter}{PHIẾU GIAO NHIỆM VỤ ĐỒ ÁN TỐT NGHIỆP}
 \begin{center}
 {\fontsize{16pt}{19.2}\selectfont \textbf{PHIẾU GIAO NHIỆM VỤ ĐỒ ÁN TỐT NGHIỆP}}
 \end{center}	
@@ -98,17 +105,21 @@
    Họ và tên sinh viên: LƯƠNG TIẾN LÂM \\
    Điện thoại liên lạc: 01245021194 \hspace{2cm} Email: lamluongbka@gmail.com \\
    Lớp:CNTT-TT2 2.04 \hspace{4.28cm} Hệ đào tạo: Đại học chính quy \\
-   Đồ án tốt nghiệp được thực hiện tại: Bộ môn Khoa học máy tính, Viện Công nghệ thông tin và truyền thông, Đại học Bách Khoa Hà Nội.
+   Đồ án tốt nghiệp được thực hiện tại: Bộ môn Hệ thống thông tin, viện Công nghệ thông tin và truyền thông, Đại học Bách Khoa Hà Nội.
   Thời gian làm ĐATN: Từ ngày 12/01/2017 đến 29/05/2017
-  \item Mục đích nội dung của ĐATN \\
+  \item Mục đích nội dung của ĐATN:
   \begin{itemize}
-    \item Nghiên cứu mạng học sâu GGNet VGG
-    \item Nghiên cứ thuật toán BING
-    \item Áp dụng mạng học sâu trong bài toán gán đa nhãn ảnh
+    \item Nghiên cứu mô hình mạng nơron nhân chập (Convolution Neural Network).
+    \item Nghiên cứu mô hình HCP (Hypotheses CNN Pooling) trong lĩnh vực gán đa nhãn ảnh.
+    \item Áp dụng mô hình HCP trong bài toán gợi ý tên món ăn trong bức ảnh của người dùng.
   \end{itemize}
-  \item Các nhiệm vụ cụ thể của ĐATN \\
+  \item Các nhiệm vụ cụ thể của ĐATN:
+    \begin{itemize}
+    \item Thiết kế một mạng nơron nhân chập học từ một bộ dữ liệu đồ ăn, mạng phải có khả năng phán đoán tên của món ăn trong bức ảnh đầu vào.
+    \item Thiết kế mô hình HCP (Hypotheses CNN Pooling) trong bài toán lấy tên các món ăn trong ảnh (bài toán gán đa nhãn ảnh)
+  \end{itemize}
   \item Lời cam đoan của sinh viên:\\
-   Tôi – Lương Tiến Lâm - cam kết ĐATN là công trình nghiên cứu của bản thân tôi dưới sự hướng dẫn của TS.Nguyễn Thị Oanh. \\
+   Tôi – \textit{Lương Tiến Lâm} - cam kết ĐATN là công trình nghiên cứu của bản thân tôi dưới sự hướng dẫn của \textit{TS.Nguyễn Thị Oanh}. \\
    Các kết quả nêu trong ĐATN là trung thực, không phải là sao chép toàn văn của bất kỳ công trình nào khác.
   \begin{flushleft}
     {\fontsize{13pt}{15.6pt}\selectfont {
@@ -129,51 +140,124 @@
 \end{enumerate}
 
 \newpage
-\chapter*{\centerline{TÓM TẮT NỘI DUNG ĐỒ ÁN TỐT NGHIỆP}}
+\addcontentsline{toc}{chapter}{TÓM TẮT NỘI DUNG ĐỒ ÁN TỐT NGHIỆP}
+\chapter*{TÓM TẮT NỘI DUNG ĐỒ ÁN TỐT NGHIỆP}
 \fontsize{13}{15.6}\selectfont
 \setlength{\parindent}{0.7cm}
-Thời đại bùng nổ về công nghệ thông tin con người đang không những chỉ muốn các công cụ mình sử dụng phải thật thuận tiên, giảm thời gian thao tác mà nó còn phải thông minh, có thể biết được người dung muôns gì ngay cả khi chưa được ra lệnh. Quả thực trong thời gian qua, ngành Trí Tuệ Nhân Tạo nói chung và Học Máy nói riêng đang có bước phát triển đột phá không ngừng, nhờ sự phát triển đó mà các thiết bị mà con nguwoif sử dụng đang ngày càng tỏ ra thông minh vượt bậc thậm chí là vượt qua cả sự nhận thức của con người.\\
-\indent Mạng học sâu là một nhánh của ngành khoa học máy tính kể trên và bài toán huấn luyện cho máy tính về một tri thức dựa trên một tập dữ liệu sẵn có không phải bài toán mới nhưng nó vẫn đang phát triển không ngừng và tương lai còn hứa hẹn ra những thành tựu lớn.\\
-\indent Trong đồ án này tác giả tập trung vào bài toán gán đa nhãn ảnh mà cụ thể là gán nhãn cho bức ảnh chụp nhiều đồ ăn, đưa ra nhiều và đúng nhất có thể các món ăn có trong bức ảnh dựa vào Mạng học sâu và thuật toán nhận dạng các đối tượng trong ảnh.\\
+Trí tuệ nhân tạo là một ngành đang phát triển và ngày càng khẳng định vị thế của nó trong ngành nghiên cứu khoa học và công nghệ và kết quả của sự phát triển đó là sự ra đời của các ứng dụng thông minh, có khả năng tự học tập và giải quyết các vấn đề dựa trên kinh nghiệm như con người. Nó đem lại cho con người sự thuận tiện và hỗ trợ giải quyết nhanh chóng nhu cầu của họ. Mạng học sâu là một nhánh của ngành khoa học máy tính kể trên và bài toán huấn luyện cho máy tính về một tri thức dựa trên một tập dữ liệu sẵn có không phải bài toán mới nhưng nó vẫn đang phát triển không ngừng và tương lai còn hứa hẹn ra những thành tựu lớn.\\
+\indent Trong đồ án này em tập trung vào việc nghiên cứu một mô hình học sâu gán đa nhãn ảnh và áp dụng mô hình đó cho bài toán nhận dạng tên của các món ăn có trong một bức ảnh do người dùng cung cấp.
+
+\vspace{2mm}
 \indent Nôi dung đồ án gồm các chương chính sau:
 
-\newpage
-\chapter*{\centerline{LỜI NÓI ĐẦU}}
-\indent Nhận dạng nội dung hay khái quát hơn là gán nhãn cho ảnh là bài toán đã được quan tâm từ lâu và đã vượt qua phạm trù lý thuyết đơn thuần và tiến tới ứng dụng thực tế. có rất nhiều ứng dụng dựa trên detech và gán nhãn ảnh được các ông lớn sử dụng và rất thành công dù chỉ là opensorce nhưng cũng kiếm được các khoản lợi nhuận khổng lồ như tag ảnh của fb hay google draw của google\\
-Nói về ẩm thực thì chúng ta đã biết độ phong phú và đa dạng của lĩnh vực này, có hàng ngàn các món ăn trên thế giớ trải dài từ bán cầu Tây sang Đông và ngay cả ở Việt Nam hệ thống ẩm thực khá phong phú nhwung không phải món ăn nào ta cũng biết. \\
-\indent Việc gán nhãn cho các món ăn hiên đang rất được các nhà phát triển web. app quan tâm. và mạng xã hội ẩm thực hiện nay mới chỉ dừng ở mức độ   gán nhãn ảnh dựa trên nhãn mà người dùng gãn sẵn vào. việc up một bức ảnh lên mà người dùng không gán nhãn thì vẫn đang chưa thực hiện được. \\
-\indent Ở trong bài toán này yêu cầu được đưa ra như sau: đưa một ảnh đầu vào chụp một hoặc nhiều món ăn. nhiệm vụ của máy tính phải phát hiện được nhiều món ăn nhất có thể và gán nhãn cho ảnh là tên các mon ăn mà nó phát hiên được.
-Có rất nhiều mô hình, mạng học sâu có thê giải quyết được bài toán này nhưng trong khuôn khổ đồ án tác gỉa sử dụng mô hình mạng googlenet để làm mô hình tranning và detecting, thuật tón BING để khoanh vùng các món ăn trong ảnh.
+\vspace{2mm}
+\indent \textit{Chương 1} Giới thiệu bối cảnh, đặt vấn đề và phát biểu bài toán.
 
+\vspace{2mm}
+\indent \textit{Chương 2} Kiến thức nền tảng.
+
+\vspace{2mm}
+\indent \textit{Chương 3} Mô hình HCP đề xuất giải bài toán gán đa nhãn ảnh.
+
+\vspace{2mm}
+\indent \textit{Chương 4} Cài đặt thực nghiệm mô hình HCP cho bài toán gán đa nhãn ảnh.
+
+\vspace{2mm}
+\indent \textit{Chương 5} Công nghệ sử dụng.
+
+\vspace{2mm}
+\indent \textit{Chương 6} Kết quả đạt được.
+
+\vspace{2mm}
+\indent \textit{Chương 7} Nhận xét và hướng phát triển.
+
+\chapter*{ABSTRACT OF THESIS}
+\addcontentsline{toc}{chapter}{ABSTRACT OF THESIS}
+\indent Artificial Intelligence is a growing industry, it plays an important role in the scientific and technological research industry and that development leads to the creation of smart application able to study by themselves and solve problems, which is based on individual experiment as human. Deep Learning is a part of Computer science, and the problem of traning computers for knowledge based on a set of available data is new, but it is still growing and in the future, it promises to bring great achievements.\\
+\indent In this thesis, i focus on research a deep network for multilable image and apply it in multi-label food labeling.
+
+\vspace{2mm}
+\indent The thesis consists of the following main chapters:
+
+\vspace{2mm}
+\indent \textit{Chapter 1} Introduction to the context, show the problem, expressing the problem, and analyzing the solution.
+
+\vspace{2mm}
+\indent \textit{Chapter 2} Background knowledge.
+
+\vspace{2mm}
+\indent \textit{Chapter 3} Introduction of HCP Model.
+
+\vspace{2mm}
+\indent \textit{Chapter 4} HCP Experimental setting.
+
+\vspace{2mm}
+\indent \textit{Chapter 5} Technology using.
+
+\vspace{2mm}
+\indent \textit{Chapter 6} Result.
+
+\vspace{2mm}
+\indent \textit{Chapter 7} Remark and development.
+
+\newpage
+\chapter*{LỜI CÁM ƠN}
+\addcontentsline{toc}{chapter}{LỜI CÁM ƠN}
+\indent Đồ án tốt nghiệp là sản phẩm cuối cùng của em trong đời sinh viên, nó là sản phẩm hoàn hảo và tự hào nhất của em. Dù còn nhiều thiếu sót nhưng thông qua nó em đã tự thấy được bản thân đã có nhiều sự tiến bộ trong lĩnh vực nghiên cứu. Kinh nghiệm từ đồ án này nhất định sẽ còn giúp em nhiều trong công việc và cuộc sống trong tương lai.\\
+\indent Để hoàn thành được đồ án này, em muốn gửi lời cảm ơn chân thành, sâu sắc nhất đến TS. Nguyễn Thị Oanh. Cám ơn cô đã luôn kiên nhẫn, chỉ bảo em đến với môn khoa học về trí tuệ nhân tạo này. Dưới sự hướng dẫn chi tiết của cô, em đã học thêm được rất nhiều các kĩ năng cần thiết trong việc nghiên cứu và thực hiện, giúp em thêm tự tin hơn nhiều với đề tài mà mình chọn.\\
+\indent Người thứ hai mà em muốn thể hiện lời tri ân là anh Lê Minh Hòa, anh là người đã dạy bảo em những kiến thức cơ bản nhất về mạng học sâu nói riêng và học máy nói chung. Cám ơn anh vì đã luôn lắng nghe và trả lời những câu hỏi có phần "ngố" của em giúp em hiểu sâu thêm mà lĩnh vực mình đang làm.\\
+\indent Cám ơn tất cả các thầy, cô giáo Viện Công nghệ thông tin và Truyền thông nói chung, bộ môn Hệ Thống Thông Tin nói riêng trong suốt 5 năm qua đã nhiệt tình giảng dạy và truyền đạt cho em nhưng kiến thức quan trọng và bổ ích nhất trong lĩnh vực công nghệ thông tin.\\
+\indent Cuối cùng, em xin gửi lời cảm ơn tới gia đình, bạn bè các anh chị đồng nghiệp  đã luôn bên em, động viên và giúp đỡ để em có thể hoàn thành đồ án tốt nghiệp này.
+\newpage
+\thispagestyle{empty}
+\renewcommand{\listfigurename}{\bfseries\Large DANH SÁCH HÌNH ẢNH\hfill} 
+\addcontentsline{toc}{chapter}{DANH SÁCH HÌNH ẢNH}  
+\listoffigures
+\renewcommand{\listtablename}{\bfseries\Large DANH SÁCH BẢNG\hfill}
+\listoftables
+\addcontentsline{toc}{chapter}{DANH SÁCH BẢNG}
+\renewcommand{\contentsname}{\bfseries\Large MỤC LỤC\hfill}
 \tableofcontents
+\cleardoublepage
+\pagenumbering{arabic}
+\clearpage
 \newpage
 
-\newpage
-\chapter{\centerline{ĐẶT VẤN ĐỀ}}
+\chapter{ĐẶT VẤN ĐỀ}
 \section{Bối cảnh}
-\indent Nhu cầu ăn uống của con người từ xa xưa đã là một nét văn hóa, con người luôn muốn thông tin cho nhau những món ăn ngon, những địa điểm hấp dẫn. Mạng xã hội ẩm thực ra đời để đáp ứng nhu cầu đó, với sự ra đời ngày càng nhiều của các trang mạng chia sẻ đồ ăn (Lozi, foody ...) người ta đã có thể dễ dàng chia sẻ từng món ăn, địa chỉ và các khoảnh khắc checkin cho người thân, bạn bè hoặc "pr" cho quán ăn của mình.\\
-\indent Cũng xuất phát từ nhu cầu người dùng, các trang mạng xã hội cũng ngày càng cải thiện về tính năng, giao diện và khả năng tương tác với người sử dụng. Từ việc up ảnh rồi "tag" bạn bè hay việc đánh dấu địa chỉ chụp bức ảnh tất cả đều đc các nhà phát triển cài đặt làm cho thế giới mạng xã hội ẩm thực chưa bao giờ hết sôi động.\\
+\indent Nhận dạng nội dung hay khái quát hơn là gán nhãn cho ảnh là bài toán đã được quan tâm từ lâu và đã vượt qua phạm trù lý thuyết đơn thuần và tiến tới ứng dụng thực tế. Có rất nhiều ứng dụng dựa trên việc phát hiện đối tượng, phát hiện vị trí và gán nhãn ảnh được các ông lớn sử dụng và rất thành công dù chỉ là opensorce nhưng cũng kiếm được các khoản lợi nhuận khổng lồ như tag ảnh của Facebook hay AutoDraw của Google.\\
+\indent Nói về ẩm thực thì chúng ta đã biết độ phong phú và đa dạng của lĩnh vực này, có hàng ngàn các món ăn trên thế giớ trải dài từ bán cầu Tây sang Đông và ngay cả ở Việt Nam hệ thống ẩm thực khá phong phú và tất nhiên việc tên gọi và nguồn gốc của món ăn là những vấn đề mà con người luôn quan tâm và muốn khám phá. \\
+\indent Nhu cầu ăn uống của con người từ xa xưa đã là một nét văn hóa, con người luôn muốn thông tin cho nhau những món ăn ngon, những địa điểm hấp dẫn. Mạng xã hội ẩm thực ra đời để đáp ứng nhu cầu đó, với sự ra đời ngày càng nhiều của các trang mạng chia sẻ đồ ăn (Lozi, Foody ...) người ta đã có thể dễ dàng chia sẻ từng món ăn, địa chỉ và các khoảnh khắc "check in" cho người thân, bạn bè hoặc "pr" cho quán ăn của mình.\\
+\indent Cũng xuất phát từ nhu cầu người dùng, các trang mạng xã hội cũng ngày càng cải thiện về tính năng, giao diện và khả năng tương tác với người sử dụng. Từ việc up ảnh rồi "tag" bạn bè hay việc đánh dấu địa chỉ chụp bức ảnh tất cả đều được các nhà phát triển cài đặt làm cho thế giới mạng xã hội ẩm thực chưa bao giờ hết sôi động.\\
 \indent Tuy nhiên ở các trang mạng xã hội ẩm thực hiện nay mới chỉ dừng lại ở mức người dùng tự đăng ảnh rồi tự gán tên món ăn cho bức ảnh, đối với những người "lười", "ngại gõ phím" hoặc tên món ăn mà người dùng không biết hoặc không nhớ tên mà không có tờ thực đơn trong khi muốn đăng ảnh ngay trước khi ăn thì vấn đề tuy nhỏ này cũng phải khiến các nhà phát triển để tâm và nghiên cứu thêm về tính năng hỗ trợ công việc này.\\
 \indent Như vậy bài toán từ nhu cầu thực tế trên, bài toán mà ta phải giúp máy tính giải quyết là: Đưa ra gợi ý tên món ăn mà người dùng đưa lên. Tuy nhiên, trong một bàn ăn sẽ không thể chỉ có một món ăn, như thế bài toán được mở rộng hơn là gợi ý nhiều nhất có thể các món có trong bức ảnh mà người dùng đưa lên.
 \section{Bài toán}
-\indent Bài toán mà em sẽ thực trong đồ án này là:\\
-\indent \textit{Từ một ảnh chụp các món ăn đầu vào, gán cho ảnh các nhãn là tên món ăn có trong ảnh.}
-\section{Hướng giải quyết}
-\indent Thể thực hiện bài toán trên ta cần thực hiện hai bài toán nhỏ hơn:
+\indent Bài toán mà em sẽ phải giải quyết trong đồ án này là:\\
+\indent \textbf{\textit{Xây dựng một hệ thống tự động gán đa nhãn cho ảnh đồ ăn và đưa ra được các món ăn giống như ảnh đầu vào.}}
+\newpage
+\section{Phân tích bài toán}
+\indent Bài toán trên là một bài toán gán nhãn ảnh, nếu đưa được bài toán về gán đơn nhãn ảnh thì có thể áp dụng được một mạng học sâu (deeolearning) để xử lý. Như vậy chúng ta cần phải tim hiểu và giải quyết các vấn đề sau:
 \begin{itemize}
-	\item Detect objects: Tìm kiếm các đối tượng đồ ăn có trong ảnh, đánh dấu vị trí vẽ đường biên sao cho đường biên này bao quát vừa đủ món ăn (trong đường biên đó chỉ có một đối tượng món ăn). (1)
-	\item Thực hiện gán nhãn cho từng đối tượng đã detect được ở (1), nhãn này chính là tên của món ăn. Nhãn của ảnh đầu vào chính là các nhãn của các đối tượng thành phần. (2)
-	"ảnh minh họa"
+	\item \textbf{Đưa bài toán gán đa nhãn về bài toán gán đơn nhãn} (1)
+	\item \textbf{Gán nhãn cho một ảnh đơn nhãn} (2)
 \end{itemize}
-\indent Để thực hiện được (1) chúng ta cần một thuật toán để detect objects, thông thường các điểm ảnh biểu diến một đối tượng trong ảnh sẽ có một số điểm chung nhất định. Và thuật toán sử dụng cần phải tìm ra được các điểm chung đấy. Một số phương pháp có thể áp dụng như BING (Binarized Normed Gradients), deconvolution neural network...\\
-\indent Trong (2) rõ ràng đây là một bài toán phân loại dữ liệu có thể thực hiện bằng phương pháp học máy học có giám sát: Sử dụng một mạng học sâu để học các tham số phân loại các input đầu vào dựa trên một tập học cho trước.
-\chapter{\centerline{KIẾN THỨC NỀN TẢNG}}
-\section{Mạng NơRon nhân tạo}
+
+\indent Để thực hiện được (1) cách đơn giản nhất để nghĩ là làm sao để cắt được các món ăn trong ảnh ra thành các ảnh riêng biệt, đối với con người thì việc này khá là dễ dàng nhưng đối với máy tính thì chúng ta phải áp dụng thuật toán để máy có thể tự tim kiếm và cắt chúng ra được \\
+\indent Trong (2) rõ ràng đây là một bài toán phân loại dữ liệu có thể thực hiện bằng phương pháp học máy học có giám sát: Sử dụng một mạng học sâu để học các tham số phân loại các dữ liệu đầu vào dựa trên một tập học cho trước, rồi từ các tham số đó có thể phân loại được các dữ liệu mới.
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15cm]{imagelable}
+    \caption{\large Gán nhãn cho ảnh đơn nhãn.}.
+\end{figure}
+\section{Cách giải quyết}
+\indent Em xin bàn về cách giải quyết bài toán sau khi chúng ta xem qua một số kiến thức nền tảng được giới thiệu ở chương sau.
+\chapter{KIẾN THỨC NỀN TẢNG}
+\section{Mạng Nơron nhân tạo}
 Mạng nơron nhân tạo là một mô phỏng của kiến trúc mạng thần kinh của con người, mạng có chức năng tương tự đó là học tập từ một tập kinh nghiệm có sẵn và áp dụng kinh nghiệm đó trong các vấn đề chưa được biết. Ta xét một nơron cơ bản:
   \begin{figure}[H]
   	\centering
-    \includegraphics[width=15cm]{netmodel}
-    \caption{\large Minh họa một nơron nhân tạo}
+    \includegraphics[width=13cm]{netmodel}
+    \caption{\large Cấu trúc một nơron nhân tạo.}
   \end{figure}
 Theo sơ đồ trên ta thấy rằng một nơron có các thành phần cơ bản sau:
 \begin{itemize}
@@ -225,24 +309,24 @@ Theo sơ đồ trên ta thấy rằng một nơron có các thành phần cơ b�
 \item Tần ẩn (Hiden Layer) có hoặc không cần tầng này, là tầng nằm giữa tầng đầu vào và đầu ra, các nơron ở tầng này không trực tiếp tương tác với môi trường ngoài mà đầu vào của nơ ron thường là kết quả đầu ra của nơ ron khác.
 \end{itemize}
 
-\indent Cách thức kết nối của các nơ ron trong mạng xác định kiến trúc (topology) của mạng. Một mang nơ ron được gọi là đầy đủ nếu như mọi đầu ra của nơ ron từ một tầng liên kết với mọi nơron ở tầng kế tiếp, còn ngược lại, đầu ra của một số nơ ron chỉ liên kết với một sô nơ ron khác được gọi là kết nỗi cục bộ. Có nhiều kiểu mạng nơ ron nhưng ta xet các loại chính sau:
+\indent Cách thức kết nối của các nơron trong mạng xác định kiến trúc (topology) của mạng. Một mang nơron được gọi là đầy đủ nếu như mọi đầu ra của nơ ron từ một tầng liên kết với mọi nơron ở tầng kế tiếp, còn ngược lại, đầu ra của một số nơ ron chỉ liên kết với một sô nơron khác được gọi là kết nỗi cục bộ. Có nhiều kiểu mạng nơron nhưng ta xet các loại chính sau:
 \begin{itemize}
-\item Mạng nơ ron lan truyền tiến: kết quả của một nơ ron là đầu vào của nơ ron tâng kế tiếp, đầu ra của một tầng bất kì không ảnh hưởng tới tầng đó, các tín hiệu di chuyển theo đường thằng, không có kết nối ngược lại từ các tầng phía sau về các tầng ở phía trước.
-\item Mạng nơ ron lan truyền ngược (): kiểu kiến trúc có sự kết nối từ nơ ron ở tầng đầu ra về nơ ron ở tầng đầu vào, kiểu kiến trúc này lưu lại trạng thái trước đó vì thế kêt quả của trạng thái tiếp theo không chỉ phụ thuộc vào các tín hiệu đầu vào mà còn phụ thuộc vào trạng thái trước đó của mạng.
+\item Mạng nơron lan truyền tiến: kết quả của một nơ ron là đầu vào của nơ ron tâng kế tiếp, đầu ra của một tầng bất kì không ảnh hưởng tới tầng đó, các tín hiệu di chuyển theo đường thằng, không có kết nối ngược lại từ các tầng phía sau về các tầng ở phía trước.
+\item Mạng nơron lan truyền ngược (): Kiểu kiến trúc có sự kết nối từ nơron ở tầng đầu ra về nơron ở tầng đầu vào, kiểu kiến trúc này lưu lại trạng thái trước đó vì thế kêt quả của trạng thái tiếp theo không chỉ phụ thuộc vào các tín hiệu đầu vào mà còn phụ thuộc vào trạng thái trước đó của mạng.
 \end{itemize}
 \section{Huấn luyện mạng nơ ron nhân tạo}
-Xét một tập dữ liệu X được dùng để huấn luyện mạng nơ ron, tập Y là tập kết quả của tập dữ liệu X. Ta gọi tập X ở trên là tập học (traning set) còn tập Y là các nhãn tương ứng. Nhiệm vụ của việc huấn luyện mạng nơ ron là điều chỉnh các trọng số liên kết trong tập W của nó sao cho đối với mọi đầu vào $x_i$ từ tập X mạng cho ra một kết quả $y_i$ tương ứng ở tập Y.
+Xét một tập dữ liệu X được dùng để huấn luyện mạng nơron, tập Y là tập kết quả của tập dữ liệu X. Ta gọi tập X ở trên là tập học (traning set) còn tập Y là các nhãn tương ứng. Nhiệm vụ của việc huấn luyện mạng nơron là điều chỉnh các trọng số liên kết trong tập W của nó sao cho đối với mọi đầu vào $x_i$ từ tập X mạng cho ra một kết quả $y_i$ tương ứng ở tập Y.
 \subsection{Các Phương Pháp học}
 \begin{itemize}
 	\item Học không giám sát:\\
 	\indent Là kiểu học mà tập X chưa biết trước các nhãn tương ứng của nó. Nhiệm vụ của mạng nơ ron lúc này là tìm cách chia tập dữ liệu ban đầu thành các nhóm, mỗi nhóm chứa các đặc trưng giống nhau.\\
 	\indent Học không giám sát được sử dụng khi chưa biết số lượng các lớp cần được phân loại, việc chia ra thành các lớp phụ thuộc vào tiêu chuẩn đánh giá độ tương tự giữa các dữ liệu.
 	\item Học có giám sát:\\
-	\indent Là kiểu học mà tập học X đã biết trước số lượng nhãn cần phân cụm và nhãn tương ứng của từng dữ liệu. Nhiệm vụ của mạng nơ ron lúc này là lưu lọc ra các đặc trưng của từng dữ liệu trong X và gán tương ứng từng đặc trưng của dữ liệu đó với nhãn trong Y. Khi có một dữ liệu mới đến không nằm trong tập dữ liệu trong X, mạng nơron phải trích xuất được các đặc trưng của dữ liệu mới đó rồi so sánh để lấy ra được nhãn cho dữ liệu.\\
+	\indent Là kiểu học mà tập học X đã biết trước số lượng nhãn cần phân cụm và nhãn tương ứng của từng dữ liệu. Nhiệm vụ của mạng nơron lúc này là lưu lọc ra các đặc trưng của từng dữ liệu trong X và gán tương ứng từng đặc trưng của dữ liệu đó với nhãn trong Y. Khi có một dữ liệu mới đến không nằm trong tập dữ liệu trong X, mạng nơron phải trích xuất được các đặc trưng của dữ liệu mới đó rồi so sánh để lấy ra được nhãn cho dữ liệu.\\
 	\indent Học có giám sát được sử dụng khi mà ta có tập học X đủ lớn để học được nhiều nhất có thể đặc trưng của từng nhãn.
 \end{itemize}
 \subsection{Huấn luyện mạng nơron theo phương pháp học có giám sát}
-\indent Để huấn luyện cho một mạng nơron theo phương pháo học có giám sát ta cần thực hiện các bước sau:\\
+\indent Để huấn luyện cho một mạng nơron theo phương pháo học có giám sát ta cần thực hiện các bước sau:
 \begin{itemize}
 \item \textit{Bước 1: }Xây dựng cấu trúc mạng nơron, vói số nơron input đầu vào là số chiều của vector đầu vào, số nơron đầu ra là số lớp cần gán nhãn. Việc lựa chọn số lượng nơron tầng ẩn và số tầng ẩn phụ thuộc vào từng trường hợp cụ thể.
 \item \textit{Bước 2: }Đưa từng vector trong tập mẫu vào mạng.
@@ -277,20 +361,20 @@ $k(x, y) * f(x, y) = \mathlarger{\sum\limits_{u=-\frac{m}{2}}^{\frac{m}{2}}\sum\
    \caption{\large Nhân chập ảnh với bộ lọc.}
 \end{figure}
 
-\indent Như vậy với một bức ảnh 32x32 và một fitter 3x3 ta sẽ có một ảnh mới kích thước 32x32 (việc padding bộ lọc đã đảm bảo cả điểm ảnh ở ngoài biên bức ảnh đều được thực hiện nhân chập) là kết quả của việc nhân chập ảnh gốc với bộ lọc. Số lượng ảnh trả ra cho các lớp tiếp theo bằng với số lượng filter nhân chập với ảnh. Các filter ban đầu được khởi tạo ngẫu nhiên và sẽ được điều chỉnh trong quá trình học. Như vậy thực chất của việc học trong mạng CNN là tìm ra các filter thích hợp nhất để lọc ra các đặc trưng của ảnh.
+\indent Như vậy với một bức ảnh 32x32 và một fitter 3x3 ta sẽ có một ảnh mới kích thước 32x32 (việc padding bộ lọc đã đảm bảo cả điểm ảnh ở ngoài biên bức ảnh đều được thực hiện nhân chập) là kết quả của việc nhân chập ảnh gốc với bộ lọc. Số lượng ảnh trả ra cho các lớp tiếp theo bằng với số lượng filter nhân chập với ảnh. Các filter ban đầu được khởi tạo ngẫu nhiên và sẽ được điều chỉnh trong quá trình học. Như vậy thực chất của việc học trong mạng CNN là tìm ra các filter thích hợp nhất để lọc ra các đặc trưng (feature) của ảnh.
 \subsubsection{Rectified Linear Unit - RELU}
 \indent Được sử dụng ngay sau tầng Convolutionm dùng hàm kích hoạt $f(x) = max(0, x)$ có nhiệm vụ chuyển toàn bộ giá trị âm trong kết quả của việc nhân chập thành giá trị 0. Hàm này tạo nên tính phi tuyến của mô hình. Có thể sử dụng các hàm phi tuyến thông dụng như sigmoid, tanh nhưng hàm max được đánh giá là dễ cài đặt và hiệu quả hơn.
 \begin{figure}[H]
   \centering
     \includegraphics[width=12cm]{relu}
-   \caption{\large Rectified Linear Unit.}
+   \caption{\large Tầng Rectified Linear Unit.}
 \end{figure}
 \subsubsection{Pooling}
 \indent Tầng này sử dụng một cửa sổ trượt quét qua toàn bộ ảnh dữ liệu, mỗi lần trượt theo một bước trượt (stride) cho trước. Khác với lớp Convolutional, lớp Pooling không tính tích chập mà tiến hành lấy mẫu (subsampling). Khi cửa sổ trượt trên ảnh, chỉ có một giá trị được xem là giá trị đại diện cho thông tin ảnh tại vùng đó (giá trị mẫu) được giữ lại. Các phương thức lấy phổ biến trong lớp Pooling là MaxPooling ( lấy giá trị lớn nhất), MinPooling (lấy giá trị nhỏ nhất) và AveragePooling (lấy giá trị trung bình).
 \begin{figure}[H]
   \centering
     \includegraphics[width=12cm]{pooling}
-   \caption{\large Max Pooling.}
+   \caption{\large Tầng Max Pooling.}
 \end{figure}
 
 \indent Xét một ảnh có kích thước 32x32 và lớp Pooling sử dụng filter có kích thước 2x2 với bước trượt stride = 2, phương pháp sử dụng là MaxPooling. Filter sẽ lần lượt duyệt qua ảnh, với mỗi lần duyệt chỉ có giá trị lớn nhất trong 4 giá trị nằm trong vùng cửa sổ 2x2 của filter được giữ lại và đưa ra đầu ra. Như vậy sau khi qua lớp Pooling, ảnh sẽ giảm kích thước xuống còn 16x16 (kích thước mỗi chiều giảm 2 lần).
@@ -300,10 +384,10 @@ $k(x, y) * f(x, y) = \mathlarger{\sum\limits_{u=-\frac{m}{2}}^{\frac{m}{2}}\sum\
 \begin{figure}[H]
   \centering
     \includegraphics[width=11cm]{fully}
-   \caption{\large Mạng CNN đầy đủ các tầng}
+   \caption{\large Mạng CNN với đầy đủ các tầng}
 \end{figure}
 \subsection{Huấn luyện mạng CNN}
-\indent Một mạng nơ-ron tích chập được hình thành bằng cách ghép các lớp nêu trên lại với nhau. Mô hình bắt đầu với lớp Convolutional. Tầng RELU thường luôn được cài đặc ngay sau tầng Convolutional hoặc thậm chí kết hợp cả hai tầng này thành một tầng. Các tầng tiếp theo có thể là Convolutional hay Pooling tùy theo kiến trúc mà ta muốn xây dựng. Cuối cùng sẽ là lớp fully-connected để tiến hành phân lớp.\\
+\indent Một mạng nơron tích chập được hình thành bằng cách ghép các lớp nêu trên lại với nhau. Mô hình bắt đầu với lớp Convolutional. Tầng RELU thường luôn được cài đặc ngay sau tầng Convolutional hoặc thậm chí kết hợp cả hai tầng này thành một tầng. Các tầng tiếp theo có thể là Convolutional hay Pooling tùy theo kiến trúc mà ta muốn xây dựng. Cuối cùng sẽ là lớp fully-connected để tiến hành phân lớp.\\
 \indent Để xem mô hình này hoạt động như thế nào ta có thể xét một kiến trúc sau đây:
 \begin{center}
 \textit{Conv1 (with RELU) – Pooling – Conv2 (with RELU) – Pooling – FC – FC}
@@ -312,32 +396,40 @@ $k(x, y) * f(x, y) = \mathlarger{\sum\limits_{u=-\frac{m}{2}}^{\frac{m}{2}}\sum\
 \begin{figure}[H]
   \centering
     \includegraphics[width=11cm]{origin_cifa}
-   \caption{\large một ảnh đầu vào}
+   \caption{\large Một dữ liệu lấy từ tập cifar-10}
 \end{figure}
 \indent Hình ảnh sẽ được đưa vào tầng Conv1 (Convolutional kết hợp RELU) gồm 32 filter có kích thước 3x3, mỗi filter sẽ được dùng để tính tích chập với ảnh và cho ra một ảnh kết quả tương ứng. Với 32 filter ta sẽ có 32 ảnh kết quả như sau:
 \begin{figure}[H]
   \centering
     \includegraphics[width=13cm]{conv}
-   \caption{\large một ảnh đầu vào}
+   \caption{\large Kết quả của việc nhân chập ảnh với các bộ lọc.}
 \end{figure}
 
 \indent Mỗi ảnh trên đều có kích thước tương ứng là 32x32. Sau đó, cả 32 ảnh này đều được cho qua lớp Pooling và kết quả trả ra sẽ là 32 ảnh có kích thước 16x16.\\
-\indent Tiếp tục dữ liệu sẽ đi vào lớp Conv2. Tương tự như Conv1, ảnh sẽ được tính tích chập với filter và trả ra kết quả. Lớp Pooling tiếp theo sẽ tiếp tục giảm kích thước của ảnh xuống còn 8x8. Với kích thước đủ nhỏ như vậy, lớp Fully-connected tiếp theo sẽ xử lý và đưa ra kết quả phân lớp hay kết quả nhận dạng.\\
-\indent Tương tự như mạng nơ-ron truyền thẳng, mạng nơ-ron tích chập cũng là một mô hình học cho nên khởi tạo ban đầu cho các trọng số trong mạng là ngẫu nhiên và sẽ được điều chỉnh thông qua quá trình học. Thuật toán học cho mạng nơ-ron tích chập cũng tương tự như mạng nơ-ron truyền thẳng là thuật toán lan truyền ngược sử dụng gradient descent; chỉ khác nhau ở chỗ mạng tích chập không liên kết đầy đủ nên độ lỗi ở mỗi lớp chỉ tính dựa vào một phần các node trong lớp tiếp theo chứ không phải toàn bộ.
-\section{Detect objects}
-\indent Mạng CNN mang lại một khả năng rất mạnh trong việc trích xuất ra các đặc trưng làm đại diện cho ảnh, tuy nhiên đối với các ảnh đa nhãn bao gồm nhiều thành phần từ các đối tượng, vị trí và tỉ lệ khác nhau thì mạng CNN chưa tối ưu được điều đó. Như vậy để thực hiện gán nhãn được cho các loại ảnh đa nhãn trước hết phải trích xuất được các đối tượng ra khỏi ảnh thành các đối tượng đơn lẻ (semantic segmentation). Có nhiều cách để thực hiện việc trích xuất trên, em xin đề xuất ra hai giải pháp:
+\indent Tiếp tục dữ liệu sẽ đi vào lớp Conv2. Tương tự như Conv1, ảnh sẽ được tính tích chập với bộ lọc và trả ra kết quả. Lớp Pooling tiếp theo sẽ tiếp tục giảm kích thước của ảnh xuống còn 8x8. Với kích thước đủ nhỏ như vậy, lớp Fully-connected tiếp theo sẽ xử lý và đưa ra kết quả phân lớp hay kết quả nhận dạng.\\
+\indent Tương tự như mạng nơron truyền thẳng, mạng nơron tích chập cũng là một mô hình học cho nên khởi tạo ban đầu cho các trọng số trong mạng là ngẫu nhiên và sẽ được điều chỉnh thông qua quá trình học. Thuật toán học cho mạng nơron tích chập cũng tương tự như mạng nơron truyền thẳng là thuật toán lan truyền ngược sử dụng gradient descent; chỉ khác nhau ở chỗ mạng tích chập không liên kết đầy đủ nên độ lỗi ở mỗi lớp chỉ tính dựa vào một phần các node trong lớp tiếp theo chứ không phải toàn bộ.
+\section{Phương pháp chuyển bài toán gán đa nhãn về bài toán gán đơn nhãn}
+\indent Mạng CNN mang lại một khả năng rất mạnh trong việc trích xuất ra các đặc trưng làm đại diện cho ảnh, tuy nhiên đối với các ảnh đa nhãn bao gồm nhiều thành phần từ các đối tượng, vị trí và tỉ lệ khác nhau thì mạng CNN chưa tối ưu được điều đó. Người ta đã tìm nhiều cách chuyển bài toán gán đa nhãn về bài toán gán đơn nhãn để tận dụng khả năng gán ảnh đơn nhãn ưu việt của mạng CNN. Việc chuyển bài toán gán đa nhãn về bài toán đơn nhãn cũng khá đơn giản, từ một ảnh đầu vào đa nhãn, bằng một cách nào đó ta lấy được các đối tượng riêng rẽ của bức ảnh là có thể đưa vào mạng CNN và chuyển về bài toán gán đơn nhãn.\\
+\indent Dưới đây em xin đề xuất ra hai mô hình có thể giải quyết vấn đề tách đối tượng riêng lẻ từ một ảnh đa nhãn.
 
 \vspace{0.15cm}
 \indent \textbf{Mạng giải chập (Deconvolution)}
 
 \vspace{0.15cm}
-\indent Ý tưởng của mô hình là ở tần gần cuối của một mạng nơron nhân chập (trước tầng Fully Connected) chúng ta đã thu được các đặc trưng của ảnh (feature) sau đó các feature này được làm đầu vào cho một mạng kết tiếp được gọi là tầng giải chập. \\
-\indent Tầng giải chập này được là phép đi ngược lại của tầng nhân chập, tức là từ các feature đầu vào, kết quả của tầng này chính là vùng ảnh đại diện cho đối tượng mà feature đó đại diện. Tầng giải chập này thực hiện các bước để tìm ra các pixel-wish là các điểm ảnh được dự đoán từ các feature, dựng lại được bộ khung và đường bao của các object có trong ảnh.\\
-\indent Mô hình được xây dựng như sau:
+\indent Theo [2], ý tưởng của mô hình này là dịch ngược lại từ đặc trưng ra đối tượng. Kết quả của mạng CNN là sau khi được traning ở tập dữ liệu học thì mạng sẽ lưu ra được bộ trọng số. Bộ trong số mà mạng học được ở đây chính là các bộ lọc (filter). Nếu ta lấy một ảnh ra, thực hiện phép nhân chập với các bộ lọc này thì ta sẽ lấy ra được các đặc trưng của ảnh. Như vậy từ một ảnh ban đầu dùng một ánh xạ ta có thê thu được các feature thì từ các feature ta cũng có thể sử dụng một ánh xạ ngược để lấy ra được ảnh ban đầu. Việc dịch ngược từ feature ra object được gọi là giải chập hay deconvolution.\\
+\indent Tầng giải chập này được là phép đi ngược lại của tầng nhân chập, tức là từ các đặc trưng đầu vào, kết quả của tầng này chính là vùng ảnh đại diện cho đối tượng mà đặc trưng đó đại diện. Tầng giải chập này thực hiện các bước để tìm ra vùng ảnh mà ở đó chưa đối tượng ban đầu (pixel-wish) là các điểm ảnh được dự đoán từ các đặc trưng, dựng lại được bộ khung và đường bao của các đối tượng có trong ảnh.\\
+\begin{figure}[H]
+  \centering
+    \captionsetup{justification=centering,margin=2cm}
+    \includegraphics[width=9cm]{unpooling}
+   \caption{\large Quá trình [2] dịch ngược lấy lại đối tượng ban đầu\\ thông qua đặc trưng của nó.}
+\end{figure}
+
+\indent [2] xây dựng mô hình mạng giải chập như sau:
 
 \indent \textit{Bước 1:} Từ mô hình VGG 16, traning trên trên tập PASCAL VOC 2012, lúc này ta đã lưu được các bộ hệ số (tức là các kernel hay các filter như đã đề cập ở phần CNN).\\
-\indent \textit{Bước 2:} Thiết lập ngẫu nhiên các cửa sổ kích thước cố định (fixed-size receptive field) trên ảnh đầu vào, thực hiện nhận chập các filter đã lấy được trong traning để lấy ra được các feature của ảnh.\\
-\indent \textit{Bước 3:} Đưa các feature trên vào mạng giải chập, từ đó lấy ra được các pixel-wish, qua đó lấy được vùng object.
+\indent \textit{Bước 2:} Thiết lập ngẫu nhiên các cửa sổ kích thước cố định (fixed-size receptive field) trên ảnh đầu vào, thực hiện nhận chập các bộ lọc đã lấy được trong quá trình học để lấy ra được các đặc trưng của ảnh.\\
+\indent \textit{Bước 3:} Đưa các đặc trưng trên vào mạng giải chập, từ đó lấy lại được các điểm ảnh biểu diễn ban đầu của đối tượng (pixel-wish), qua đó lấy được vùng đối tượng.
 \begin{figure}[H]
   \centering
     \includegraphics[width=15cm]{decnn}
@@ -345,41 +437,87 @@ $k(x, y) * f(x, y) = \mathlarger{\sum\limits_{u=-\frac{m}{2}}^{\frac{m}{2}}\sum\
 \end{figure}
 \indent \textit{Nhận xét:}
 \begin{itemize}
-\item Mô hình trên có ưu điểm là detect object khá tốt, vẽ được cả đường bao xung quanh object.
-\item Cần khá nhiều bước traning: Traning bước đầu
+\item Mô hình trên có ưu điểm là việc tìm kiếm đối tượng khá tốt, vẽ được cả đường bao xung quanh đối tượng.
 \item Trong bài toán nhận dạng thì việc phân đoạn chính xác đến từng đường biên của đối tượng là không cần thiết, có chỉ cần một hình chữ nhật bao quanh đối tượng là đủ.
 \end{itemize}
 
 \indent \textbf{Mô hình HCP (Hypothesis Convolution Pooling)}\\
-\indent Mô hình HCP dựa trên khả năng phân loại đơn nhãn cao của mạng CNN, cấu trúc của mô hình như sau:
+\indent Mô hình HCP dựa trên khả năng phân loại đơn nhãn cao của mạng CNN, dựa vào phần tổng quan của [1] ta có thể hình dung cấu trúc của mạng HCP như sau:
 \begin {itemize}
-\item Một số lượng objects được coi như là các đầu vào, các objects này được tạo ra bằng cách sử dụng các công nghệ detect object, không cần quá chính xác đến đường bao của object mà chỉ cần tạo ra một cửa sổ bao quanh đối tượng là đủ. Các thuật toán có thể sử dụng như binarized normed gradients (BING), EdgeBoxes …
-\item Một mạng CNN để thực hiện việc prediction từ các inputs đầu vào, kết quả sau tầng này chúng ta có các nhãn thô từ ảnh đầu vào.
-\item Dùng một tầng với tên gọi là pooling, thực hiện các đánh giá từ các nhãn thô để đưa ra các nhãn cuối cùng cho ảnh đầu vào.
+\item Sử dụng một thuật toán tìm kiếm, tìm kiếm vị trí của các đối tượng trong dữ liệu đầu vào, lấy vùng dữ liệu chỉ chứa riêng đối tượng đó. Các thuật toán có thể sử dụng như binarized normed gradients (BING), EdgeBoxes …
+\item Một mạng CNN, mạng này đã được học các tham số để từ một dư liệu đầu vào sẽ cho ra đầu ra là nhãn của dữ liệu đầu vào dựa trên cơ sở nhưng gì đã học được.\\
+\item Sau khi được gán nhãn bởi CNN, do thuật toán tìm kiếm có thể sẽ trả về khá nhiều dữ liệu dẫn đến việc trùng lặp hoặc sai đối tượng, mạng CNN sau khi gán được nhãn phải có cơ chế đánh giá độ tin cậy của nhãn, tâng này dựa trên độ tin cậy đó sẽ lọc ra và đưa ra các nhãn phù hợp nhất.
 \end{itemize}
-\newpage
-\indent Với yêu cầu đặt ra là chưa cần độ chính xác quá cao và đối với đồ ăn thì ta chỉ cần lấy được một vùng hình chữ nhật là đã có thể lấy được đĩa (bát) món ăn nên trong đề tài này em đã lựa chọn mô hình HPC để thực hiện. Sau đây là giới thiệu chi tiết hơn về mô hình.
-\section{Giới thiệu mô hình HPC và mạng GoogleNet}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=8cm]{cropbing}
+   \caption{\large Các cửa sổ mà [4] lấy được với thuật toán tìm kiếm đối tượng BING}
+\end{figure}
+
+\indent Như vậy mô hình sử dụng một thuật toán phát hiện vùng chứa đối tượng (một cửa sổ bao quanh đối tượng) rồi đưa cả vùng đó vào mạng CNN. Việc chỉ tìm một vùng hình chữ nhật có khả năng chứa đối tượng có ưu điểm là nhanh, dễ cài đặt, tuy nhiên rất có thể sẽ rơi vào trường hợp lấy được các vùng có đối tượng không liên quan gì tới chủ đề cần xét, vì thế cần có cơ chế đánh giá lỗi phù hợp.
+
+\chapter{MÔ HÌNH HCP ĐỀ XUẤT GIẢI BÀI TOÁN \newline \hspace*{3.4cm} GÁN ĐA NHÃN ẢNH}
+\indent Với yêu cầu đặt ra là chưa cần độ chính xác quá cao và đối với đồ ăn thì ta chỉ cần lấy được một vùng hình chữ nhật là đã có thể lấy được đĩa (bát) món ăn nên trong đề tài này em đã lựa chọn mô hình HPC để thực hiện. Mạng share CNN được sử dụng trong mô hình là mạng GoogleNet - kiến trúc đạt giải nhất trong cuộc thi Large Scale Visual Recognition Challenge 2014, đây là mô hình có độ lỗi nhỏ nhất trong tập dữ liệu ImageNet trong cuộc thi đó chỉ khoảng 6.67\% (lỗi đối với mắt người khoảng 13\%).[3]\\
+\indent Dưới đây em xin trình bày chi tiết lý thuyết về mô hình.
+\section{Mô hình HPC (Hypothesis Convolution Pooling)}
 \indent Mô hình HPC có cấu trúc như sau:
 \begin{figure}[H]
   \centering
     \includegraphics[width=15cm]{hpc}
    \caption{\large Tổng quan của mô hình HCP (hypotheses cnn pooling)}
 \end{figure}
-\indent Như đã trình bày tóm tắt ở trên, một số lượng các vùng hình chữ nhật được đánh giá là có đối tượng cần gán nhãn được lựa chọn (hypotheses) bởi một mô hình phát hiện đối tượng.Chuyển các objects phát hiện được sang thành các vector rồi đưa chúng vào một mạng CNN (chi tiết về mạng CNN này e sẽ trình bày ở phần sau). Mạng CNN này sẽ được cho traning trước từ một tập dữ liệu đơn nhãn cho trước (ImageNet), sau đó điều chỉnh bằng tập dữ liệu đa nhãn (VOC PASCAN). Các bước được thực hiện chi tiết như sau:
+\indent Như đã trình bày tóm tắt ở trên, một số lượng các vùng hình chữ nhật được đánh giá là có đối tượng cần gán nhãn được lựa chọn (hypotheses) bởi một mô hình phát hiện đối tượng. [1] Chuyển các đối tượng phát hiện được sang thành các vector rồi đưa chúng vào một mạng CNN (chi tiết về mạng CNN này e sẽ trình bày ở phần sau). Mạng CNN này sẽ được cho traning trước từ một tập dữ liệu đơn nhãn cho trước (ImageNet), sau đó điều chỉnh bằng tập dữ liệu đa nhãn (VOC PASCAN).\\
+\indent Theo [1] mô hình HCP có các đặc điểm sau:\\
+\indent $-$ Không cần nhãn (ground truth) cho các đường biên (bounding box)  khi traning dữ liệu đa nhãn. Khác với traning mạng Deconvolution cần đến các nhãn của từng đối tượng thì mạng mới có thể “dịch ngược” được lại vùng chứa dữ liệu. Mô hình HCP không cần như thế bởi vì các boundingbox đầu vào mạng CNN là khá nhiều, việc đánh nhãn cho từng bounding box là việc làm rất mất thời gian. Do đó, HCP có khả năng khái quát hóa rất tốt đối với tập dữ liệu đa nhãn mới.\\
+\indent $-$ Mô hình HCP có khả năng xử lý lỗi lớn, giảm thiểu các đối tượng dư thừa: Tầng cuối của mô hình HCP có tên gọi là Pooling, nhiệm vụ của tầng này là dựa trên điểm (score) sau tầng CNN lọc bỏ những đối tượng được phát hiện sai (noise). Như vậy giảm thiếu được các nhãn lỗi.\\
+\newpage
+\indent $-$ Tầng CNN của HCP rất linh hoạt, có khả năng train được trên tập dữ liệu đơn nhãn. Các mạng học sâu như LeNet, VGG Net, GoogleNet … đều có thể làm được mạng CNN của mô hình.\\
+\indent $-$ Kết quả đầu ra của HCP là kết quả dự đoán đa nhãn. HCP tạo ra sự phân bố xác suất bình thường trên nhãn sau lớp softmax, và giá trị xác suất cuối đó là độ tin cậy vủa việc gán vào lớp tương ứng.\\
+\indent [1] thực hiện các bước chi tiết như sau:
 \subsection{Hypotheses Extraction}
-Như đã trình bày ở trên, HCP nhận đầu vào là các vùng ảnh chứa object đơn lẻ. Như vậy hiệu năng của HCP phụ thuộc lớn vào việc lấy được các đối tượng, quá trình lấy được các objects phải đảm bảo:\\
-\indent \textbf{Độ chính xác cao trong việc detect object}: Mô hình HCP được để xuất với giả định input đầu vào là một vùng ảnh bao quát toàn bộ object đơn nhãn, nó yêu cầu độ chính xác cao trong việc lấy ra các input này.\\
-\indent \textbf{Chỉ lấy một lượng cần thiết các đối tượng:} Việc lấy ra các số lượng object phụ thuộc vào mức độ tính toán của máy tính cũng như bộ nhớ đệm RAM vì sau khi lấy ra được chúng sẽ được đưa đồng thời vào một mạng CNN, sẽ yêu cầu một lượng lớn tài nguyên tính toán.\\
-\indent \textbf{Việc Tính toán phải đạt hiệu quả cao:} Việc lấy ra được các object là công việc tính toán đầu tiên của mô hình HCP và nó ảnh hưởng đến độ chính xác của toàn bộ mô hình. Tóm lại, một thuật toán detect object tốt có thể sinh ra các đối tượng với độ chính xác cao, tăng
+\indent Như đã trình bày ở trên, HCP nhận đầu vào là các vùng ảnh chỉ chứa đối tượng. Như vậy kết quả đầu ra của HCP phụ thuộc lớn vào việc lấy được các đối tượng, quá trình lấy được các đối tượng phải đảm bảo:\\
+\indent \textbf{Độ chính xác cao trong việc phát hiện đối tượng}: Mô hình HCP được để xuất với giả định dữ liệu đầu vào là một vùng ảnh bao quát toàn bộ đối tượng đơn nhãn, nó yêu cầu độ chính xác cao trong việc lấy ra các vùng dữ liệu này.\\
+\indent \textbf{Chỉ lấy một lượng cần thiết các đối tượng:} Việc lấy ra các số lượng các đối tượng phụ thuộc vào mức độ tính toán của máy tính cũng như bộ nhớ đệm RAM vì sau khi lấy ra được chúng sẽ được đưa đồng thời vào một mạng CNN, sẽ yêu cầu một lượng lớn tài nguyên tính toán.\\
+\indent \textbf{Hiệu quả tính toán cao:} Việc lấy ra được các vùng bao quanh đối tượng là công việc tính toán đầu tiên của mô hình HCP và nó ảnh hưởng đến độ chính xác của toàn bộ mô hình. Tóm lại, một thuật toán phát hiện đối tượng tốt có thể lấy ra được các vùng mà khả năng có đối tượng nằm trong đó phải cao.
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering,margin=2cm}
+    \includegraphics[width=10cm]{Bingextrac}
+   \caption{\large Minh họa việc lấy ra được các vùng ảnh chứa đối tượng gán nhãn}
+\end{figure}
+\indent Hình trên thể hiện kết quả của tầng Hypotheses Extractioncủa [1]: Hình (a) ảnh gốc, hình (b) Các cửa số sinh bởi BING, hình (c) dữ liệu từ một trong các cửa sổ của BING.
 \subsection{Training HCP}
-Trong HPC bất cứ mô hình CNN nào đều cũng có thể triển khai thiết kế cho tầng CNN. Tuy nhiên để mô hình CNN hoạt động có hiệu quả thì trước hết phải có một tập dữ liệu khá lớn để mạng traning,
-\subsection{Phân Loại Đa Nhãn}
+\indent Một mạng CNN được traning với một bộ dữ liệu đủ lớn để nó có thể học được các đặc trưng của dữ liệu. Ví dụ như tác giả của mô hình đã dùng hai loại mạng là AlexNet và VGG 16 để traning trên tập dữ liệu VOC 2007 và VOC 2012 [1]. Thay đổi số nơron ở tầng cuối cho phù hợp với tổng số nhãn mà mô hình phải gán. Sau quá trình học, một tập trọng số được lưu lại, mạng CNN sẽ sử dụng bộ trọng số này để gán nhãn cho các đối tượng được lấy ra từ bước Hypotheses Extraction.
+\subsection{Pooling}
+\indent Đánh giá các nhãn được dự đoán từ mạng CNN, dựa trên độ tin cậy mà mạng đưa ra, tầng nãy sẽ lọc các nhãn nhiễu, có tỷ lệ tin cậy thấp. Sau tầng này các nhãn cuối cùng của bức ảnh sẽ được đưa ra.
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering,margin=2cm}
+    \includegraphics[width=10cm]{HCP_Pooling}
+   \caption{\large Tầng Pooling}
+\end{figure}
+\newpage
+\section{Giới thiệu mạng học sâu GoogleNet}
+\indent GoogleNet là một mô hình cụ thể hóa của một cấu trúc tên là Inception – Mô hình chiến thắng trong cuộc thi Large Scale Visual Recognition Challenge 2014.[3]
 
-\chapter{\centerline{CÀI ĐẶT THỰC NGHIỆM ĐỒ ÁN}}
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15.5cm]{imagenet}
+   \caption{\large Mô hình mạng GoogleNet}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15cm, height=13cm]{googlenet_layer}
+   \caption{\large Chi tiết số layer mạng GoogleNet}
+\end{figure}
+\newpage
+\indent Trong mô hình này, toàn bộ tầng convolution sẽ sử dụng hàm rectified linear activation, trường tiếp nhận ảnh đâu vào mạng là 224 x 224 pixel đối với ảnh màu RGB. Đầu ra của mô hình là một vector 1000 chiều tương ứng với 1000 class trong bộ ImageNet. Mạng được thiết kế để chạy trên nhiều thiết bị, kể cả các thiết bị cá nhân, hạn chế về tài nguyên.\\
+\indent Theo [5], việc sử dụng mạng GoogleNet kết hợp với backend TensorFlow (một thư viện mã nguồn mở của Google hỗ trợ việc tính toán trong học máy) sẽ tối ưu tốc độ tính toán của máy tính, giảm thời gian học cũng như tăng độ chính xác cho mô hình.
+\chapter{CÀI ĐẶT THỰC NGHIỆM MÔ HÌNH HCP \newline \hspace*{3.4cm} CHO BÀI TOÁN GÁN ĐA NHÃN ẢNH}
 \section{Bộ dữ liệu}
 \subsection{Giới thiệu về bộ dữ liệu}
-\indent Bộ dữ liệu được sử dụng trong đồ án là bộ dữ liệu tên là Food-101 Dataset. Ảnh ở trong bộ dữ liệu này được tải từ trang mạng xã hội FoodSpotting \url{http://www.sharelatex.com}, trang mạng cho phép người dùng chụp các bức ảnh đồ ăn mà họ muốn, đánh dấu địa điểm chụp, loại đồ ăn và ghi chú về món ăn.
+\indent Bộ dữ liệu được sử dụng trong đồ án là bộ dữ liệu tên là Food-101 Dataset. Ảnh ở trong bộ dữ liệu này được tải từ trang mạng xã hội FoodSpotting \url{http://www.foodspotting.com/find/in/The-World}, trang mạng cho phép người dùng chụp các bức ảnh đồ ăn mà họ muốn, đánh dấu địa điểm chụp, loại đồ ăn và ghi chú về món ăn.\\
 \indent Bộ dữ liệu có tất cả 101 món ăn mà tác giả cho là các món phổ biến nhất, mỗi một món ăn sẽ có 1000 ảnh về món ăn. Đối mới mỗi món ăn, tác giả chọn ngẫu nhiên 750 ảnh được dùng cho tập traning, 250 ảnh được dùng cho tập testing. Trong bộ ảnh có một vài điểm lỗi do việc đánh sai nhãn hoặc do sự nhầm lẫn màu sắc giữa các món ăn (một số món ăn khác tên nhau nhưng do hình dạng hoặc màu sắc giống nhau). Nhưng tác giả vẫn tin tưởng rằng đối với các thuật toán về thị giác máy tính thông thường hoàn toàn có thể đối phó được với các lỗi nhỏ này.\\
 \indent Tất cả ảnh trong bộ dữ liệu đưuọc điều chỉnh lại kích thước sao cho chiều dài lớn nhất là 512pixel. Như vậy, bộ dữ liệu bao gồm tổng công 101000 bức ảnh về các món ăn thông dụng trên thế giới.
 \begin{figure}[H]
@@ -394,20 +532,19 @@ Trong HPC bất cứ mô hình CNN nào đều cũng có thể triển khai thi�
    \caption{\large Các ảnh trong bộ Food 101}
 \end{figure}
 \subsection{Chia bộ dữ liệu}
-\indent Trong đồ án của mình e chia bộ dữ liệu khác so với tác giả, dể đảm bảo tính ngẫu nhiên trong lựa chọn dữ liệu, trong bộ data em cũng chọn ngẫu nhiên ra 700 ảnh mỗi nhãn làm tập traning, 100 ảnh làm tập validation 200 ảnh còn lại làm tập testing, cách chia như vậy vì em muốn tăng số lượng ảnh test để cho ra độ chính xác cao nhất về mô hình.
+\indent Trong đồ án của mình e chia bộ dữ liệu khác so với tác giả, để đảm bảo tính ngẫu nhiên trong lựa chọn dữ liệu, trong bộ data em cũng chọn ngẫu nhiên ra 700 ảnh mỗi nhãn làm tập traning, 100 ảnh làm tập validation 200 ảnh còn lại làm tập testing, cách chia như vậy vì em muốn tăng số lượng ảnh test để cho ra độ chính xác cao nhất về mô hình.
 \subsection{Data Augmentation}
-\indent Với bộ data 10100 ảnh trông có vẻ khá đồ sộ nhưng  khi đem vào thực tế traning thì con số này vẫn còn khá nhỏ, vì thế e đề xuất sử dụng phương pháp argument data, mục đích của phương pháp này là từ một ảnh ban đầu ta thực hiện một số bước chuyển đổi ảnh để ảnh có vẻ khác so với ban đầu, tức là nếu dùng thị giác con người trông nội dung hai bức ảnh có thể khác nhau nhưng đối với máy tính thì khi nhìn dưới dạng nhị phân thì nó lại là hai ảnh khác biệt nhau hoàn toàn, như thế mô hình sẽ không bao giờ đọc nội dung một dữ liệu hai lần. \\
+\indent Với bộ data 10100 ảnh trông có vẻ khá đồ sộ nhưng  khi đem vào thực tế traning thì con số này vẫn còn khá nhỏ, vì thế em đề xuất sử dụng phương pháp argument data, mục đích của phương pháp này là từ một ảnh ban đầu ta thực hiện một số bước chuyển đổi ảnh để ảnh có vẻ khác so với ban đầu, tức là nếu dùng thị giác con người trông nội dung hai bức ảnh có thể khác nhau nhưng đối với máy tính thì khi nhìn dưới dạng nhị phân thì nó lại là hai ảnh khác biệt nhau hoàn toàn, như thế mô hình sẽ không bao giờ đọc nội dung một dữ liệu hai lần. \\
 \begin{figure}[H]
   \centering
   \captionsetup{justification=centering,margin=2cm}
     \includegraphics[width=15.5cm]{argunment}
-   \caption{\large Các ảnh tuy cùng biểu diễn một nội dung  \newline nhưng đối với máy tính chúng đều là các dữ liệu độc lập khác nhau.}
+   \caption{\large Ảnh được tạo ra từ kĩ thuật Data Augmentation.}
 \end{figure}
-\indent Trong đồ án này em thực hiên augment dữ liệu bằng cách xoay xoay ảnh một góc $45^o$ , tiến hành cắt ảnh theo chiều dài vài chiều rộng mỗi chiều một đoạn bằng 0.125 trên chiều dài/rộng. Như vậy từu một ảnh ban đầu ta có được thêm $360 : 45 = 8$ ảnh, việc augment được thực hiện realtime, tức là trước khi đưa một ảnh vào trong mô hình chứ không thực hiện lưu trữ physic các dữ liệu sinh ra thêm này.
- 
+\indent Trong đồ án này em thực hiện sinh thêm dữ liệu bằng cách xoay ảnh một góc $45^o$ , tiến hành cắt ảnh theo chiều dài vài chiều rộng mỗi chiều một đoạn bằng 0.125 trên chiều dài/rộng. Như vậy từu một ảnh ban đầu ta có được thêm $360 : 45 = 8$ ảnh, việc sinh thêm dữ liệu được thực hiện ngay sau khi một ảnh từ tập dữ liệu ban đầu được đưa vào, tức là trước khi đưa một ảnh vào trong mô hình chứ không thực hiện lưu trữ vật lý các dữ liệu sinh ra thêm này.
 \section{Cài đặt HPC}
 \subsection{Cài đặt thuật toán Binarized Normed Gradients}
-\indent Thuật toán BING khá phức tạp để cài đặt nhưng thư viện opencv đã cung cấp cho chúng ta một API là ObjectnessBING để thực hiên thuật toán:
+\indent Thuật toán BING khá phức tạp để cài đặt nhưng theo [6], thư viện opencv đã cung cấp cho chúng ta một API là ObjectnessBING để thực hiên thuật toán:
 \begin{lstlisting}
 class CV_EXPORTS ObjectnessBING : public Objectness {
  public:
@@ -428,27 +565,241 @@ class CV_EXPORTS ObjectnessBING : public Objectness {
 };
 \end{lstlisting}
 
-\indent Đầu ra của API là một mảng các tọa độ của cửa sổ (bao gồm tọa độ trên cùng bên trái và dưới cùng bên phải). Các tọa độ này đã được sắp xếp theo thứ tự score (tọa độ nào mà có khả năng có object càng lớn thì điểm càng cao).\\
-\indent Dưới đây là một kết quả đầu ra của thuật toán BING:
+\indent Đầu ra của API là một mảng các tọa độ, mỗi tọa độ được đi liền với một hệ số được gọi là điểm (score), các tọa độ mà tạo nên vùng chữ nhật mà khả năng chứa đối tượng trong đó càng lớn thì có điểm càng cao, mảng tọa độ đầu ra được sắp xếp theo chiều giảm của điểm.\\
+\indent Dưới đây là một ví dụ của kết quả đầu ra của thuật toán BING:
 \begin{figure}[H]
   \centering
   \captionsetup{justification=centering,margin=2cm}
-    \includegraphics[width=12.5cm]{bing}
-   \caption{\large Đường màu vàng là các vùng BING detect được là có đối tượng ở trong đó.}
+    \includegraphics[width=11.5cm]{bing}
+   \caption{\large Cửa sổ phần chia vùng của BING.}
 \end{figure}
-\indent Trong khuôn khổ đồ án, em chỉ lấy ra năm vùng có điểm số cao nhất để lấy hypothese đưa vào mạng CNN, như vậy sẽ gặp một số trường hợp lỗi là có một số vùng chứa cùng một object như thế mô hình sẽ đưa ra một số nhãn giống nhau. Nguyên nhân là do điều kiện về phần cứng (máy không có card đồ họa) nếu đưa quá nhiều hypothese vào CNN việc tính toán ở phần prediction sẽ mất rất nhiều thời gian.
-\subsection{Cài đặt Share CNN}
-\indent Theo[1], mạng Share CNN sẽ được cài đặt bằng mạng VGG16, nhưng bài báo ra đời năm xxx và sau năm đó mạng GoogleNet ra đời có độ chính xac cao hơn so với VGG16 nên trong đồ án này em lựa chọn mạng GoogleNet để làm mạng Share CNN. \\
-\indent Đối với GoogleNet, mạng được traning trên bộ ImageNet với 1000 classes, do bộ FoodData chỉ có 101 lớp nên cần chỉnh sửa lại mô hình, tức là tầng Output của mô hình chỉ có 101 nơron thây vì 1000 nơron như mô hình ban đầu.\\
-\indent Thay vì khởi tạo random, kế thừa từ việc mô hình này đã được traning sẵn từ bộ dữ lớn ImageNet, các trọng số của mô hình được khởi tạo là bộ trọng số của GoogleNet khi traning trên ImageNet.
-\indent Mô hình sẽ được traning lại từ đầu, tức là khởi tạo là bộ trọng số từ tập ImageNet nhưng vẫn phải cho học lại với tập Food-101 để cập nhật lại các filters lọc features. Nguyên nhân là do bộ ImageNet chứa rất ít dữ liệu về đồ ăn, nếu giữ các features học được từ ImageNet mà áp dụng phương pháp fine-turning (Phương pháp mà ta chỉ traning lại tầng FullyConnected) thì sẽ cho kết quả khá thấp.\\
-\indent Các ảnh đầu vào phải qua bước tiền xử lý, vì mạng GoogleNet có input đầu vào là mảng 2 chiều 299x299 nên ảnh đầu vào cần được resize về kích thước đó. Các trọng số sẽ được cập nhật theo từng epoch, lựa chọn batch size là 32.\\
-\indent Thiết lập điều kiện dừng của mô hình
+\indent Trong khuôn khổ đồ án, em chỉ lấy ra năm vùng có điểm số cao nhất để lấy dữ liệu đưa vào mạng CNN, như vậy sẽ gặp một số trường hợp lỗi là có một số vùng chứa cùng một đối tượng như thế mô hình sẽ đưa ra một số nhãn giống nhau. Nguyên nhân là do điều kiện về phần cứng (máy không có GPU) nếu đưa quá nhiều dữ liệu vào CNN việc tính toán ở phần gán nhãn sẽ mất rất nhiều thời gian.
+\subsection{Cài đặt tầng CNN}
+\indent \textbf{Quá trình Tranning}\\
+\indent Đối với GoogleNet, mạng được huấn luyện trên bộ ImageNet với 1000 classes, do bộ FoodData chỉ có 101 lớp nên cần chỉnh sửa lại mô hình, tức là tầng Output của mô hình chỉ có 101 nơron thây vì 1000 nơron như mô hình ban đầu.\\
+\indent Thay vì khởi tạo ngẫu nhiên, kế thừa từ việc mô hình này đã được traning sẵn từ bộ dữ lớn ImageNet, các trọng số của mô hình được khởi tạo là bộ trọng số của GoogleNet khi traning trên ImageNet.\\
+\indent Các ảnh đầu vào phải qua bước tiền xử lý, vì mạng GoogleNet có input đầu vào là mảng 2 chiều $224 x 224$ , tuy nhiên api sử dụng là Inception v3 nhận input đầu vào là $299 x 299$ nên ảnh đầu vào cần được resize về kích thước đó. Các trọng số sẽ được cập nhật theo từng epoch, lựa chọn batch size là 32.\\
+\indent Quá trình traning được thực hiện qua hai bước sau:
+\begin{itemize}
+  \item \textbf{B1} Thực hiện traning tầng Fully Connected mới được cài đặt, bước này chúng ta cho traning qua 7 epoch, dùng hàm tối ưu \textit{rmsprop} hàm lỗi \textit{categorical crossentropy}. Bước này chỉ có ý nghĩa khởi tạo tham số cho tầng FullyConnected để tầng này có tham số khởi tạo dựa trên bộ tham số của GoogleNet, cho phép việc traning ở bước sau nhanh đạt trang thái hội tụ hơn.
+  \item \textbf{B2} Thực hiện traning lại toàn hộ các layer của mô hình, bước này chỉ dừng lại khi điều kiện dừng được thỏa mãn, dùng hàm tối ưu \textit{Stochastic Gradient Descent} với $learning rate = 10^{-4}$ và $momentum = 0.9$. Đây là bước chính của quá trình traning.
+\end{itemize}
 
+\indent Thiết lập điều kiện dừng của mô hình: Sau khi hết 1 epoch, mô hình sẽ kiểm tra lại giá trị lỗi trên tập validation, giá trị lỗi mà không giảm trên 0.001 thì coi như epoch đó không có cải thiện gì về độ chính xác của mô hình, sau 10 epoch mà không có epoch nào cải thiện độ chính xác thì mô hình coi như đã đạt đến trạng thái hội tụ (lỗi tối thiểu, không cải thiện thêm được nữa) và sẽ dừng lại, lưu bộ trọng số và mô hình ra file hdf5.\\
+\indent Mạng GoogleNet trên được cài đặt với backend là TensorFlow cũng là một mã nguồn mở do Google cung cấp, sử dụng GPU để tăng tốc độ tính toán.\\
+\indent Khi cài đặt GoogleNet, em áp dụng thêm một kĩ thuật để load data realtime, tức là không load toàn bộ data vào RAM mà khi cần lấy ảnh nào để traning thì sẽ lấy ảnh đó ra từ ổ đĩa cứng. Áp dụng kĩ thuật này sẽ giảm được kích thước bộ nhớ cần sử dụng nhưng sẽ làm tăng thời gian học.\\
+\indent \textbf{Testing}\\
+\indent Sau khi thực hiện traning, chúng ta phải kiểm thử lại mô hình trên tập test. Load lại model và bộ trọng số, đưa dữ liệu từ tập test đơn nhãn vào mô hình, dữ liệu test này không cân thiết phải sinh thêm. Đưa ra kết luận cuối cùng và đánh giá về độ chính xác của mô hình.\\
+\indent \textbf{Prediction}\\
+\indent Nếu kết quả của việc test mô hình chấp nhận được ta đưa đầu vào là các kết quả đầu ra của thuật toán BING, lấy nhãn cho từng input đầu vào. Như vậy ta được các nhãn thô đưa vào tầng pooling.
+\subsection{Cài đặt tầng Pooling}
+\indent Kết quả đầu ra của việc prediction ở tầng CNN ngoài nhãn còn cho ta giá trị độ tin cây của kết quả phán đoán, nhiệm vụ của tầng này là lấy ra được các nhãn mà có độ tin cậy cao, những nhãn mà có độ tin cậy thấp quá có thể là do lỗi từ thuật toán BING. có thể đặt ra một ngưỡng (Threshold) nào đó cho độ tin cậy này, nếu mà nhãn có độ tin cậy lớn hơn thì chấp nhận còn không thì coi như lỗi.\\
+\indent Việc đưa kết quả dự đoán vào tầng Pooling chỉ cần thiết nếu ta đưa một lượng lớn các đối tượng phát hiện được từ tâng hypothese extraction, khi đó phải lọc các kết quả nhiễu. Nhưng do khuôn khổ đồ án bị giới hạn bởi phần cứng, đưa lượng lớn input vào CNN máy tính mất rất nhiều thời gian để tính toán và đôi khi lượng tính toán lớn làm treo máy. Vì lý do đó ở tầng đầu tiên (Hypotheses extraction) em chỉ lấy ra năm vùng ảnh có điểm số để đưa vào predict, vì thế kết quả ở tầng Pooling này cũng chính là kết quả từ tầng CNN.\\
+\section{Môi trường cài đặt}
+\subsection{Traning và testing}
+\begin{itemize}
+\item Ngôn ngữ sử dụng: Python
+\item Thư viện sử dụng: Keras
+\item Backend TensorFlow
+\item Cấu hình máy:
+  \begin{itemize}
+  	\item Hệ điều hành: Window 10
+  	\item Chip intel 6700K 4.2 GHz
+  	\item GPU  GTX 1080
+  	\item RAM 16 GB
+  \end{itemize}
+\end{itemize}
+\subsection{Mô hình HPC}
+\begin{itemize}
+\item Ngôn ngữ sử dụng: C++, Python
+\item Thư viện sử dụng: Boost, opencv, QT5, keras.
+\item Backend TensorFlow
+\item Cấu hình máy:
+  \begin{itemize}
+  	\item Hệ điều hành: Ubuntu 14.04
+  	\item Chip intel 380M, 2.53 GHz
+  	\item GPU: Không có.
+  	\item RAM 4 GB
+  \end{itemize}
+\end{itemize}
+\chapter{CÔNG NGHỆ SỬ DỤNG}
+\indent Chương này em xin phép được giới thiệu các công nghệ, API được áp dụng để cài đặt chương trình trên.
+\section{BING algorithm}
+\indent Như đã giới thiệu trước ở trên thuật toán BING đươc gọi qua API BINGObjectness của opencv3. Hàm được implement bằng ngôn ngữ c++.
+\section{Thư viện mã nguồn mở Keras}
+\indent Keras là một thư viện mã nguồn mở được viết bằng ngôn ngữ Python, thư viện cung cấp API xây dựng đến từng tầng của mạng nơron. Thư viện có thể chạy được cả trên nền backend Tensorflow và Theano.\\
+\indent Keras cho phép bạn:
+  \begin{itemize}
+	\item Tạo model một cách dễ dàng, nhanh chóng.
+	\item Hỗ trợ cả mạng nơron nhân chập, mạng nơron hồi quy và kết hợp cả hai loại mạng.
+	\item Hỗ trợ điều chỉnh chạy mô hình trên cả GPU và CPU
+  \end{itemize}
+\indent Tài liệu và cách cài đặt keras đều được hướng dẫn chi tiết ở [5]:
+\section{TensorFlow}
+\indent Là thư viện phần mềm mã nguồn mở dành cho máy học trong nhiều loại hình tác vụ nhận thức và hiểu ngôn ngữ do Google phát triển, nó hỗ trợ việc thực hiện các phép tính toán trên cả CPU và GPU.
+\section{Các thư viện khác}
+  \begin{itemize}
+  	\item Cuda 8.0 
+  	\item CuMem
+  	\item Boost: hỗ trợ gọi API python trong c++.
+  \end{itemize}
+\chapter{KẾT QUẢ ĐẠT ĐƯỢC}
+\section {Traning và testing}
+\indent \textbf{Traning}\\
+\indent Traning bộ dữ liệu Food 101 dataset với tập traning gồm 70700 ảnh  và tập validation gồm 10100 ảnh, sử dụng tính toán trên GPU sau 25 tiếng thì không giảm được giá trị lỗi trên tập validation, việc học đã đạt đến trạng thái hộ tụ và dừng lại, tổng cộng trải qua 36 epochs.\\
+\indent Kết quả :
+\begin {itemize}
+\item Tập Training: độ chính xác: 89\%
+\item Tập Validation: độ chính xác: 78\%
+\end{itemize}
+\indent Độ chính xác của  việc traning : 78\%\\
 
-\chapter{\centerline{KẾT QUẢ ĐẠT ĐƯỢC}}
+\begin{tabular}{|c|c|c|c|c|}
+    \hline 
+    \textbf{Epoch} & \parbox[t]{3cm}{\centering \textbf{accuracy of \\traning data}} &  \parbox[t]{3cm}{\centering \textbf{Loss of \\traning data}} & \parbox[t]{3cm}{\centering \textbf{accuracy of \\Validation data}} & \parbox[t]{3cm}{\centering \textbf{Loss of \\validation data}}\\ \hline
+    	0 & 0.5624186 & 1.7629781 & 0.61455445 & 1.6177192\\ \hline
+	1 & 0.6212588 & 1.4771633 & 0.64772277 & 1.4122724\\ \hline
+	2 & 0.6520650 & 1.3416465 & 0.67287128 & 1.3364692\\ \hline
+	3 & 0.6725318 & 1.2455767 & 0.68603960 & 1.2877407\\ \hline
+	4 & 0.6954738 & 1.1518266 & 0.69910891 & 1.2106477\\ \hline
+	5 & 0.7067185 & 1.0997621 & 0.70396039 & 1.1810450\\ \hline
+	6 & 0.7194059 & 1.0464039 & 0.71524752 & 1.1714120\\ \hline
+	7 & 0.7291654 & 1.0002647 & 0.72356435 & 1.1145202\\ \hline
+	8 & 0.7414427 & 0.9544930 & 0.73207920 & 1.0925390\\ \hline
+	9 & 0.7512729 & 0.9121937 & 0.73504950 & 1.0915971\\ \hline
+	10 & 0.760707 & 0.8737058 & 0.73772277 & 1.0598847\\ \hline
+	11 & 0.768359 & 0.8412693 & 0.74227722 & 1.0546400\\ \hline
+	12 & 0.777199 & 0.8074751 & 0.74980198 & 1.0358347\\ \hline
+	13 & 0.781626 & 0.7779717 & 0.74712871 & 1.0326129\\ \hline
+	14 & 0.789306 & 0.7555132 & 0.75841584 & 1.0175661\\ \hline
+	15 & 0.796478 & 0.7239118 & 0.75693069 & 1.0211428\\ \hline
+	16 & 0.802644 & 0.6999283 & 0.75762376 & 1.0050849\\ \hline
+	17 & 0.809759 & 0.6774876 & 0.75841584 & 1.0189477\\ \hline
+	18 & 0.813422 & 0.6549603 & 0.76277227 & 0.9958300\\ \hline
+	19 & 0.820579 & 0.6304191 & 0.76168316 & 0.9809867\\ \hline
+	20 & 0.825176 & 0.6076579 & 0.76643564 & 0.9954877\\ \hline
+	21 & 0.831004 & 0.5926836 & 0.76633663 & 0.9941222\\ \hline
+	22 & 0.834695 & 0.5724869 & 0.76584158 & 0.9678680\\ \hline
+	23 & 0.839448 & 0.5496933 & 0.77732673 & 0.9566142\\ \hline
+	24 & 0.844186 & 0.5373830 & 0.77148514 & 0.9929095\\ \hline
+	25 & 0.847963 & 0.5208337 & 0.77396039 & 0.9714066\\ \hline
+	26 & 0.856421 & 0.4947306 & 0.76940594 & 0.9768595\\ \hline
+	27 & 0.860622 & 0.4791264 & 0.77673267 & 0.9812089\\ \hline
+	28 & 0.862404 & 0.4693604 & 0.76782178 & 1.0265319\\ \hline
+	29 & 0.868330 & 0.4451520 & 0.77534653 & 0.9759983\\ \hline
+	30 & 0.870594 & 0.4364880 & 0.77564356 & 0.9913350\\ \hline
+	31 & 0.874356 & 0.4215446 & 0.77594059 & 0.9863004\\ \hline
+	32 & 0.879448 & 0.4081470 & 0.77762376 & 0.9805998\\ \hline
+	33 & 0.880226 & 0.3966179 & 0.77168316 & 1.0080145\\ \hline
+	34 & 0.886817 & 0.3786247 & 0.78059405 & 0.9935890\\ \hline
+	35 & 0.890848 & 0.3655257 & 0.77584158 & 1.0041505\\ \hline
+	36 & 0.891711 & 0.3581178 & 0.77999999 & 0.9812125\\ \hline 
+\end{tabular}
 
-\chapter{\centerline{KẾT LUẬN}}
+\captionof{table}{\large {Giá trị độ chính xác và độ lỗi qua mỗi epoch.}}
+
+\begin{figure}[H]
+  \centering
+  \captionsetup{justification=centering,margin=2cm}
+    \includegraphics[width=16cm, height=10cm]{chart}
+   \caption{\large Biểu đồ thể hiện tương quan giữa giá trị acc - loss của \\ tập traning và tập validation.}
+\end{figure}
+
+\indent \textbf{Testing}\\
+\indent Sử dụng mô hình với bộ trọng số đã học được ở traning, áp dụng với bộ dữ liệu gồm 20200 ảnh test, ta nhận được kết quả độ chính xác trên tập test là 79.1\%.
+\indent Với việc đạt độ chính xác 79.1\%, mô hình đã tương đối chính xác và được chấp nhận làm tầng share-CNN của mô hình HPC.
+\section {Mô hình HPC}
+\indent Với việc đạt độ chính xác 79.1\%, mô hình đã tương đối chính xác và được chấp nhận làm tầng share-CNN của mô hình HPC.\\
+\indent Với mô hình HCP, do chưa có bộ data để test với trường hợp ảnh đa nhãn trong đồ ăn nên hiện tại việc kiểm tra độ chính xác của mô hình được thực hiện bằng cách sử dụng một vài ảnh đa nhãn để kiểm tra kết quả của mô hình. Và kết quả nhận được cũng rất khả quan, mạng có thể gán nhãn gần đúng các món ăn ở trong ảnh.\\
+\indent Với ảnh đầu vào:
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15.5cm]{input2}
+   \caption{\large Ảnh thử nghiệm 1}
+\end{figure}
+\indent Dễ dàng nhận thấy rằng trong đó có pizza và đùi gà rán, ta sẽ xem mô hình đưa ra các nhãn gì cho bức ảnh:
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15.5cm]{output2}
+   \caption{\large Kết quả trả về là: Pizza và Cánh gà rán}
+\end{figure}
+\indent Kế quả trả về là Piza và Cánh gà rán, cũng tương đối chính xác.
+\newpage
+\indent Thử một ảnh khác với món pizza, bánh mì kẹp, spaghetti, con hàu:
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=7.5cm]{input1}
+   \caption{\large Ảnh thử nghiệm 2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15.5cm]{output1}
+   \caption{\large Kết quả trả về gồm có spaghetti, bánh sandwich, pallea (một lọại động vật có vỏ)}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15.5cm]{input3}
+   \caption{\large Ảnh chứa pizza, spaghetti, nộm}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=15.5cm]{output3}
+   \caption{\large Kết quả dự đoán có pizza, spaghetti, bruschetta(một món nộm)}
+\end{figure}
+\chapter{NHẬN XÉT VÀ HƯỚNG PHÁT TRIỂN}
+\section {Nhận xét cá nhân}
+\indent \textbf{Ưu điểm:}\\
+\indent $-$ Nắm được các khái niệm cơ bản và cách thức hoạt động của một mạng nơron và cụ thể hơn là một mạng nơron nhân chập.\\
+\indent $-$ Đã hoàn thành việc cài đặt mạng GoogleNet - một mạng học sâu, và áp dụng được mạng học sâu đó vào bộ dữ liệu khác và cụ thể là bộ dữ liệu về đồ ăn Food 101 data.\\
+\indent $-$ Hoàn thành việc cài đặt mô hình HCP, và áp dụng mô hình cho bài toán của mình là gán đa nhãn ảnh đồ ăn.\\
+\indent $-$ Chương trình đã chạy cho kết quả là nhãn của các món ăn tương đối chính xác.
+\indent \textbf{Nhược điểm:}\\
+\indent $-$ Độ chính xác 79.1\% mới ở mức tạm chấp nhận được, cần phải cải thiện thêm độ chính xác.\\
+\indent $-$ Trong đồ án này, mô hình HCP còn chưa thể hiện rõ ràng vài trò của tầng pooling, cần có bước cải thiện về hiệu năng, đưa được nhiều đối tượng vào mạng để traning để tầng Pooling thực hiện tốt vai trò lọc của mình trả về các nhãn chính xác hơn.
+
+\section {Hướng phát triển}
+\indent $-$ Chương trình hiện tại mới chỉ đang chạy ở mức local, chưa áp dụng vào một mạng xã hội cụ thể nào vì thế tương lai em sẽ phát triển một mạng xã hội nhỏ và áp dụng mô hình vào đó.\\
+\indent $-$ Bộ dữ liệu hiện tại đang là bộ dữ liệu các món ăn phổ biến trên thế giới, các món có ở Việt Nam còn khá ít, như vậy cần phải tiếp tục tìm kiếm dữ liệu đối với đồ ăn Việt Nam để mô hình cho ra kết quả chính xác đối với các món ăn của Việt Nam.
+
+\begin{thebibliography}{9}
+\bibitem{latexcompanion} 
+Yunchao Wei, Wei Xia, Min Lin, Junshi Huang, Bingbing Ni, Jian Dong, Yao Zhao
+\textit{HCP: A Flexible CNN Framework for Multi-label Image Classification}. 
+2015
+
+\bibitem{latexcompanion} 
+Hyeonwoo Noh, Seunghoon Hong, Bohyung Han
+\textit{Learning Deconvolution Network for Semantic Segmentation}. 
+Department of Computer Science and Engineering, POSTECH, Korea 2015
+
+\bibitem{latexcompanion} 
+Christian Szegedy, Wei Liu, Yangqing Jia, Pierre Sermanet, Scott Reed, Dragomir Anguelov, Dumitru Erhan, Vincent Vanhoucke, Andrew Rabinovich.
+\textit{Going Deeper with Convolutions}. 
+Google Inc, University of North Carolina, Chapel Hill, University of Michigan, Ann Arbor Magic Leap Inc 2015.
+
+\bibitem{latexcompanion} 
+Cheng, Ming-Ming
+\textit{BING: Binarized normed gradients for objectness estimation at 300fps.}
+IEEE CVPR. 2014.
+%\bibitem{einstein} 
+%Albert Einstein. 
+%\textit{Zur Elektrodynamik bewegter K{\"o}rper}. (German) 
+%[\textit{On the electrodynamics of moving bodies}]. 
+%Annalen der Physik, 322(10):891–921, 1905.
+ 
+\bibitem{knuthwebsite} 
+Food Classification with Deep Learning in Keras / Tensorflow
+\\\texttt{http://blog.stratospark.com/deep-learning-applied-food-\\classification-deep-learning-keras.html}
+
+\bibitem{knuthwebsite} 
+Objectness Algorithms
+\\\texttt{http://docs.opencv.org/3.0-beta/modules/saliency/\\doc/objectness\_algorithms.html}
+
+\end{thebibliography}
+
 \end{document}
 
 

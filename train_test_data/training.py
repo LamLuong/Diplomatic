@@ -123,7 +123,7 @@ history = History()
 model.compile(optimizer=SGD(lr=0.0001, momentum=0.9), loss='categorical_crossentropy', metrics=['accuracy'])
 checkpointer = ModelCheckpoint(filepath='second.3.{epoch:02d}-{val_loss:.2f}.hdf5', verbose=1, save_best_only=True)
 csv_logger = CSVLogger('second.3.log')
-early_stoping = EarlyStopping(monitor='val_loss', patience=5, min_delta=0.001, verbose=0)
+early_stoping = EarlyStopping(monitor='val_loss', patience=10, min_delta=0.001, verbose=0)
 
 model.fit_generator(train_generator,
                     validation_data=validation_generator,
