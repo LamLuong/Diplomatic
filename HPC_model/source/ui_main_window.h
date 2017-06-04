@@ -40,6 +40,8 @@ class UI_Window : public QWidget {
   QPushButton *predic_button_;
   QPushButton *close_button_;
 
+  QTextEdit *text_edit_;
+
   QLabel *origin_image_;
   QLabel *origin_boudingbox_image_;
 

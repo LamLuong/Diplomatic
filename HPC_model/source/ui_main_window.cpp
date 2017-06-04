@@ -34,6 +34,9 @@ UI_Window::UI_Window(QWidget *parent) : QWidget(parent) {
   origin_boudingbox_image_layout->addWidget(origin_boudingbox_image_);
   origin_boudingbox_image_box_->setLayout(origin_boudingbox_image_layout);
   
+  text_edit_ = new QTextEdit;
+  text_edit_->setMaximumSize(200, 200);
+  text_edit_->setReadOnly(true);
 // resultimage
   QVBoxLayout *prediction_layout = new QVBoxLayout;
   prediction_box_ = new QGroupBox(tr("Image Result Area"));
@@ -50,6 +53,7 @@ UI_Window::UI_Window(QWidget *parent) : QWidget(parent) {
   main_layout_->addLayout(button_contron_layout, 0, 0);
   main_layout_->addWidget(origin_image_box_, 1, 0);
   main_layout_->addWidget(origin_boudingbox_image_box_, 2, 0);
+  main_layout_->addWidget(text_edit_, 3, 0);
   main_layout_->addWidget(prediction_box_, 0, 1, 5, 5);
 
 // Handle
@@ -67,7 +71,7 @@ UI_Window::UI_Window(QWidget *parent) : QWidget(parent) {
 
 void UI_Window::LoadInputImageFile() {
   input_file_name_ = QFileDialog::getOpenFileName(this, tr("Open File"),
-                                                "~/Desktop/",
+                                                "/home/lamluong/Desktop/",
                                                 tr("Images (*.png *.jpg)"));
   if (!input_file_name_.isEmpty()) {
     Objectness::GetInstance()->LoadImage(input_file_name_.toUtf8().constData());
@@ -80,7 +84,7 @@ void UI_Window::LoadInputImageFile() {
 
 void UI_Window::ShowInputImageFile(ImageType type) {
   cv::Mat _input = Objectness::GetInstance()->GetInputImage(type);
-  cv::imwrite("~/hehe.jpg", _input);
+  cv::imwrite("/home/lamluong/hehe.jpg", _input);
   cv::cvtColor(_input, _input, CV_BGR2RGB);
   QPixmap pix_image = QPixmap::fromImage(QImage((uchar*) _input.data,
                                          _input.cols,
@@ -103,8 +107,13 @@ void UI_Window::ShowPredic() {
   PredictionApi::GetInstance()->Predict(std::string(input_file_name_.toUtf8().constData()),
                                         pos_objectness_,
                                         results);
+  std::string img_label = "";
   for (int i = 0; i < 5; i++) {
     predic_result_[i]->UpdateResultImage(QString::fromStdString(results[i]));
+    img_label = img_label + results[i] + "\n";
   }
+
+  text_edit_->clear();
+  text_edit_->setPlainText(QString::fromStdString(img_label));
 }
 
