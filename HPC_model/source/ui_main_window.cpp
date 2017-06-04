@@ -107,12 +107,15 @@ void UI_Window::ShowPredic() {
   PredictionApi::GetInstance()->Predict(std::string(input_file_name_.toUtf8().constData()),
                                         pos_objectness_,
                                         results);
+
+  Objectness::GetInstance()->DrawLabelBoundigBox(results);
+  ShowInputImageFile(ImageType::BOUNDINGBOX_IMAGE);
+
   std::string img_label = "";
   for (int i = 0; i < 5; i++) {
     predic_result_[i]->UpdateResultImage(QString::fromStdString(results[i]));
     img_label = img_label + results[i] + "\n";
   }
-
   text_edit_->clear();
   text_edit_->setPlainText(QString::fromStdString(img_label));
 }

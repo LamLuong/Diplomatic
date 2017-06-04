@@ -26,7 +26,7 @@ class Objectness {
   bool LoadImage(std::string path_image);
   void GetBondingBox(std::vector<cv::Vec4i>& objectness_boundingbox);
   cv::Mat GetInputImage(ImageType type);
-
+  void DrawLabelBoundigBox(const std::vector<std::string>&);
  private:
   void CaculateBoudingBox();
   void DrawBoundingBox();
