@@ -48,9 +48,8 @@ void Objectness::DrawLabelBoundigBox(const std::vector<std::string>& input_text)
   cv::cvtColor(boundingbox_image_, boundingbox_image_, CV_BGR2RGB);
   for (unsigned i = 0; i < 5; i++) {
     cv::Mat clone = input_image_.clone();
-
+    cv::cvtColor(clone, clone, CV_BGR2RGB);
     cv::Vec4i pos = objectness_boundingbox_[i];
-    std::cout << input_text[i] << "  " << pos[0] << "  " <<  pos[1] <<  "  " << pos[2] << "  " <<  pos[3]<< std::endl;
     cv::putText(boundingbox_image_, input_text[i], cv::Point(pos[0], pos[1] + 30),
                 cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 255), 3);
 

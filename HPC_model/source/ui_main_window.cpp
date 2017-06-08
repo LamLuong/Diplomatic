@@ -71,7 +71,7 @@ UI_Window::UI_Window(QWidget *parent) : QWidget(parent) {
 
 void UI_Window::LoadInputImageFile() {
   input_file_name_ = QFileDialog::getOpenFileName(this, tr("Open File"),
-                                                "/home/lamluong/Desktop/",
+                                                "~/Desktop/",
                                                 tr("Images (*.png *.jpg)"));
   if (!input_file_name_.isEmpty()) {
     Objectness::GetInstance()->LoadImage(input_file_name_.toUtf8().constData());
@@ -84,7 +84,7 @@ void UI_Window::LoadInputImageFile() {
 
 void UI_Window::ShowInputImageFile(ImageType type) {
   cv::Mat _input = Objectness::GetInstance()->GetInputImage(type);
-  cv::imwrite("/home/lamluong/hehe.jpg", _input);
+  cv::imwrite("hehe.jpg", _input);
   cv::cvtColor(_input, _input, CV_BGR2RGB);
   QPixmap pix_image = QPixmap::fromImage(QImage((uchar*) _input.data,
                                          _input.cols,
